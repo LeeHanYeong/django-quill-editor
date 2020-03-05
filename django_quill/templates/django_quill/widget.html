@@ -1,0 +1,19 @@
+{% load static %}
+<div class="vLargeTextField django-quill-widget-container">
+    <div id="quill-{{ id }}" class="django-quill-widget" data-config="{{ config }}" data-type="django-quill">
+
+    </div>
+    <div>{{ delta }}</div>
+    <div>{{ html }}</div>
+    <div>{{ value }}</div>
+    <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden">
+    <script>
+        (function () {
+            var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe }}'));
+            {% if quill and quill.delta %}
+                var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
+                wrapper.quill.setContents(contents);
+            {% endif %}
+        })();
+    </script>
+</div>

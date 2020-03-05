@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h1><a href="{% url 'index' %}">Django-Quill-Editor</a></h1>
+        <ul>
+            <li><a href="{% url 'admin:index' %}">Django Admin</a></li>
+            <li><a href="{% url 'posts:quill-post-list' %}">QuillPost List</a></li>
+        </ul>
+        <hr>
+        <div>
+            <h2>CreateForm</h2>
+            <form action="" method="POST">{% csrf_token %}
+                {% if form.content.errors %}
+                    <ul>
+                        {% for error in form.content.errors %}
+                            <li style="color: red;">{{ error|escape }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {{ form.content }}
+                <button type="submit"
+                        style="width: 100%; padding: 10px;
+                        font-size: 13px;
+                        font-weight: bold;
+                        margin-top: 4px;
+                        background-color: #8ab1f7; color: white;
+                        border-radius: 2px;">Create Post</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
