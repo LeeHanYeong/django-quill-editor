@@ -9,6 +9,9 @@ python = "^3.8"
 django = "^3.0.3"
 django-extensions = "^2.2.8"
 django-js-asset = "^1.2.2"
+twine = "^3.1.1"
+setuptools = "^45.2.0"
+wheel = "^0.34.2"
 
 [tool.poetry.dev-dependencies]
 notebook = "^6.0.3"
