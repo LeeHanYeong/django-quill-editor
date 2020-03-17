@@ -15,7 +15,7 @@ setup(
     author='Lee HanYeong',
     author_email='dev@lhy.kr',
     license='MIT',
-    packages=find_packages(exclude=['test*']),
+    packages=find_packages(exclude=['test*', 'sample']),
     install_requires=[
         'django',
     ],

@@ -1,0 +1,3 @@
+[run]
+source = django_quill
+omit = */test*
