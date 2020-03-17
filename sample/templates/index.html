@@ -9,7 +9,7 @@
         </ul>
         <hr>
         <div>
-            <h2>CreateForm</h2>
+            <h2>ModelForm</h2>
             <form action="" method="POST">{% csrf_token %}
                 {% if form.content.errors %}
                     <ul>
@@ -24,8 +24,15 @@
                         font-size: 13px;
                         font-weight: bold;
                         margin-top: 4px;
-                        background-color: #8ab1f7; color: white;
+                        background-color: #7291f7; color: white;
                         border-radius: 2px;">Create Post</button>
+            </form>
+        </div>
+        <div>
+            <h2>Form</h2>
+            <form action="" method="POST">{% csrf_token %}
+                {{ normal_form.normal_content }}
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>

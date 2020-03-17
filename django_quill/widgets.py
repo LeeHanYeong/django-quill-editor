@@ -23,9 +23,17 @@ json_encode = LazyEncoder().encode
 
 class QuillWidget(forms.Textarea):
     class Media:
-        js = ('django_quill/django_quill.js', 'django_quill/quill.js')
+        js = (
+            'django_quill/highlight.pack.js',
+            'django_quill/django_quill.js',
+            'django_quill/quill.js',
+        )
         css = {
-            'all': ('django_quill/django_quill.css', 'django_quill/quill.snow.css')
+            'all': (
+                'django_quill/highlight.darcula.min.css',
+                'django_quill/django_quill.css',
+                'django_quill/quill.snow.css',
+            )
         }
 
     def __init__(self, config_name='default', *args, **kwargs):

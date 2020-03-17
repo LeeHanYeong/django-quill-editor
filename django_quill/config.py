@@ -1,16 +1,18 @@
 DEFAULT_CONFIG = {
     'theme': 'snow',
     'modules': {
+        'syntax': True,
         'toolbar': [
             [
                 {'font': []},
                 {'header': []},
                 {'align': []},
+                'bold', 'italic', 'underline', 'strike', 'blockquote',
+                {'color': []},
+                {'background': []},
             ],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote', {'color': []}, {'background': []}],
-            ['code', 'link', 'image'],
+            ['code-block', 'link', 'image'],
             ['clean'],
         ]
     }
-
 }
