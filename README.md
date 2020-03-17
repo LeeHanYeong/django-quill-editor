@@ -95,18 +95,12 @@ class QuillPostAdmin(admin.ModelAdmin):
     </head>
     ```
 
-  - Or, directly import the necessary CSS and JS files **(highlight.pack.js must be imported first!)**  
+  - Or, import CSS and JS files directly using `{% include %}` template tags.
 
     ```django
     <head>
-        <!-- highlight.js -->
-        <link href="{% static 'django_quill/highlight.darcula.min.css' %}" rel="stylesheet">
-        <script src="{% static 'django_quill/highlight.pack.js' %}"></script>
-    
-        <!-- django-quill-editor -->
-        <link href="{% static 'django_quill/quill.snow.css' %}" rel="stylesheet">
-        <script src="{% static 'django_quill/quill.js' %}"></script>
-        <script src="{% static 'django_quill/django_quill.js' %}"></script>
+        <!-- django-quill-editor Media -->
+        {% include 'django_quill/media.html' %}
     </head>
     ```
 
