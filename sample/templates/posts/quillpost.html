@@ -1,0 +1,4 @@
+<div>
+    <h3>{{ post.pk }} <a href="{% url 'posts:quill-post-update' pk=post.pk %}">[EDIT]</a></h3>
+    <div>{{ post.content.html|safe }}</div>
+</div>

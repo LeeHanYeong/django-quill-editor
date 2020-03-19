@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <h1>List</h1>
     <a href="{% url 'index' %}">◀ Back to index</a>
     {% for post in object_list %}
-        <div>
-            <h3>{{ post.pk }}</h3>
-            <div>{{ post.content.html|safe }}</div>
-        </div>
+        {% include 'posts/quillpost.html' with post=post %}
         {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
 {% endblock %}
