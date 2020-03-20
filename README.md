@@ -8,7 +8,7 @@
 - The entire code for inserting WYSIWYG editor is less than 30 lines
 - It can be used in both admin and Django views
 
-![django-quill-editor](_assets/django-quill-editor-sample.png)
+![django-quill-editor](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/django-quill-editor-sample.png)
 
 ## Setup
 
@@ -79,7 +79,7 @@ class QuillPostAdmin(admin.ModelAdmin):
     pass
 ```
 
-![admin-sample](_assets/admin-sample.png)
+![admin-sample](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/admin-sample.png)
 
 
 
@@ -170,7 +170,7 @@ def model_form(request):
 
 **Form, ModelForm's Output:**
 
-![form-sample](_assets/form-sample.png)
+![form-sample](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/form-sample.png)
 
 
 
