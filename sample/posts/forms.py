@@ -6,6 +6,7 @@ from .models import QuillPost
 
 class QuillFieldForm(forms.Form):
     normal_content = QuillFormField()
+    normal_content2 = QuillFormField()
 
 
 class QuillPostForm(forms.ModelForm):

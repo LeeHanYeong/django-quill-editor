@@ -62,6 +62,8 @@ class QuillWidget(forms.Textarea):
         attrs['name'] = name
         if hasattr(value, 'quill'):
             attrs['quill'] = value.quill
+        else:
+            attrs['value'] = value
         final_attrs = self.build_attrs(self.attrs, attrs)
         return mark_safe(renderer.render('django_quill/widget.html', {
             'final_attrs': flatatt(final_attrs),
@@ -69,4 +71,5 @@ class QuillWidget(forms.Textarea):
             'name': final_attrs['name'],
             'config': json_encode(self.config),
             'quill': final_attrs.get('quill', None),
+            'value': final_attrs.get('value', None),
         }))

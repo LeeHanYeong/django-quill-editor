@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>NormalForm</h1>
+    <div><a href="{% url 'index' %}">◀ Go to Index</a></div>
+
+    <h2>HTML initial</h2>
+    <form action="">
+        {{ form.normal_content }}
+    </form>
+
+    <h2>Text initial</h2>
+    <form action="">
+        {{ form.normal_content2 }}
+    </form>
+{% endblock %}
