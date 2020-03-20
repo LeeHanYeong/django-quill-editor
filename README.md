@@ -1,5 +1,7 @@
 # django-quill-editor
 
+[![PyPI version](https://badge.fury.io/py/django-quill-editor.svg)](https://badge.fury.io/py/django-quill-editor)
+
 **django-quill-editor** makes [Quill.js](https://quilljs.com/) easy to use on Django Forms and admin sites
 
 - **No configuration required for static files!**
