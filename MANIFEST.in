@@ -1,0 +1,3 @@
+recursive-include django_quill *
+exclude django_quill/test*
+global-exclude *.pyc
