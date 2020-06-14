@@ -1,7 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>Detail (PK: {{ object.pk }})</h1>
-    <div><a href="{% url 'posts:quill-post-list' %}">◀ Go to List</a></div>
-    {% include 'posts/quillpost.html' with post=object %}
-{% endblock %}
