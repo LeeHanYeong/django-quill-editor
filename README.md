@@ -33,12 +33,12 @@
 
 ## Run Sample project
 
-- [Source code can be found here](https://github.com/LeeHanYeong/django-quill-editor/tree/master/sample)
+Repo: [django-quill-editor-sample](https://github.com/LeeHanYeong/django-quill-editor-sample)
 
 ```shell
-# Clone repo, move to sample project
-git clone https://github.com/LeeHanYeong/django-quill-editor
-cd django-quill-editor/sample
+# Clone repo
+git clone https://github.com/LeeHanYeong/django-quill-editor-sample
+cd django-quill-editor-sample
 
 # Create virtualenv (I used pyenv, but you can use other methods)
 pyenv virtualenv 3.7.5 django-quill
@@ -46,7 +46,7 @@ pyenv local django-quill
 
 # Install Python packages
 pip install -r requirements.txt
-python manage.py runserver
+python app/manage.py runserver
 ```
 
 
