@@ -1,6 +1,6 @@
 # django-quill-editor
 
-[![PyPI version](https://badge.fury.io/py/django-quill-editor.svg)](https://badge.fury.io/py/django-quill-editor)
+[![PyPI version](https://badge.fury.io/py/django-quill-editor.svg)](https://badge.fury.io/py/django-quill-editor) [![Documentation Status](https://readthedocs.org/projects/django-quill-editor/badge/?version=latest)](https://django-quill-editor.readthedocs.io/en/latest/?badge=latest)
 
 **django-quill-editor** makes [Quill.js](https://quilljs.com/) easy to use on Django Forms and admin sites
 
@@ -48,6 +48,12 @@ pyenv local django-quill
 pip install -r requirements.txt
 python app/manage.py runserver
 ```
+
+
+
+## Documentation
+
+Documentation for **django-quill-editor** is located at [https://django-quill-editor.readthedocs.io/](https://django-quill-editor.readthedocs.io/)
 
 
 

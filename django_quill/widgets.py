@@ -1,3 +1,5 @@
+from collections.abc import Mapping
+
 from django import forms
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
@@ -9,6 +11,11 @@ from django.utils.functional import Promise
 from django.utils.safestring import mark_safe
 
 from .config import DEFAULT_CONFIG
+
+__all__ = (
+    'LazyEncoder',
+    'QuillWidget',
+)
 
 
 class LazyEncoder(DjangoJSONEncoder):
@@ -41,16 +48,16 @@ class QuillWidget(forms.Textarea):
         self.config = DEFAULT_CONFIG.copy()
         configs = getattr(settings, 'QUILL_CONFIGS', None)
         if configs:
-            if isinstance(configs, dict):
+            if isinstance(configs, Mapping):
                 if config_name in configs:
                     config = configs[config_name]
-                    if not isinstance(config, dict):
-                        raise ImproperlyConfigured('QUILL_CONFIGS["%s"] setting must be a dict' % config_name)
+                    if not isinstance(config, Mapping):
+                        raise ImproperlyConfigured('QUILL_CONFIGS["%s"] setting must be a Mapping object' % config_name)
                     self.config.update(config)
                 else:
                     raise ImproperlyConfigured('No configuration named "%s" found in your QUILL_CONFIGS' % config_name)
             else:
-                raise ImproperlyConfigured('QUILL_CONFIGS settings must be a dict')
+                raise ImproperlyConfigured('QUILL_CONFIGS settings must be a Mapping object')
 
     def render(self, name, value, attrs=None, renderer=None):
         if renderer is None:
