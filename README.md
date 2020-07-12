@@ -56,6 +56,34 @@ python app/manage.py runserver
 Documentation for **django-quill-editor** is located at [https://django-quill-editor.readthedocs.io/](https://django-quill-editor.readthedocs.io/)
 
 
+## Change toolbar menus`
+
+Add `QUILL_CONFIGS` to the **settings.py**
+
+```
+QUILL_CONFIGS = {
+    'default':{
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    {'font': []},
+                    {'header': []},
+                    {'align': []},
+                    'bold', 'italic', 'underline', 'strike', 'blockquote',
+                    {'color': []},
+                    {'background': []},
+                ],
+                ['code-block', 'link'],
+                ['clean'],
+            ]
+        }
+    }
+    
+}
+
+```
 
 ## Usage
 
