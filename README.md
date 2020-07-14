@@ -56,11 +56,11 @@ python app/manage.py runserver
 Documentation for **django-quill-editor** is located at [https://django-quill-editor.readthedocs.io/](https://django-quill-editor.readthedocs.io/)
 
 
-## Change toolbar menus`
+## Change toolbar menus
 
 Add `QUILL_CONFIGS` to the **settings.py**
 
-```
+```python
 QUILL_CONFIGS = {
     'default':{
         'theme': 'snow',
@@ -80,9 +80,7 @@ QUILL_CONFIGS = {
             ]
         }
     }
-    
 }
-
 ```
 
 ## Usage
