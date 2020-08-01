@@ -9,7 +9,8 @@
                 var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
                 wrapper.quill.setContents(contents);
             {% elif value %}
-                wrapper.quill.clipboard.dangerouslyPasteHTML(0, '{{ value|safe }}')
+                var value = JSON.parse('{{ value|safe|escapejs }}');
+                wrapper.quill.setContents(JSON.parse(value['delta']));
             {% endif %}
         })();
     </script>
