@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import os
+
 from setuptools import find_packages, setup
 
-ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 README = open(os.path.join(ROOT_DIR, 'README.md')).read()
 VERSION = open(os.path.join(ROOT_DIR, 'version.txt')).read()
 
