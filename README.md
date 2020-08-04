@@ -56,7 +56,8 @@ python app/manage.py runserver
 Documentation for **django-quill-editor** is located at [https://django-quill-editor.readthedocs.io/](https://django-quill-editor.readthedocs.io/)
 
 
-## Change toolbar menus
+
+## Change toolbar configs
 
 Add `QUILL_CONFIGS` to the **settings.py**
 
@@ -82,6 +83,8 @@ QUILL_CONFIGS = {
     }
 }
 ```
+
+
 
 ## Usage
 
@@ -210,4 +213,35 @@ def model_form(request):
 
 As an open source project, we welcome contributions.
 The code lives on [GitHub](https://github.com/LeeHanYeong/django-quill-editor)
+
+
+
+## Distribution (for owners)
+
+### PyPI Release
+
+```shell
+poetry install  # Install PyPI distribution packages
+python deploy.py
+```
+
+
+
+### Sphinx docs
+
+```shell
+brew install sphinx-doc  # macOS
+```
+
+#### Local
+
+```
+cd docs
+make html
+# ...
+# The HTML pages are in _build/html.
+
+cd _build/html
+python -m http.server 3001
+```
 
