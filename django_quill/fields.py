@@ -14,7 +14,7 @@ class FieldQuill:
     def __init__(self, instance, field, json_string):
         self.instance = instance
         self.field = field
-        self.json_string = json_string
+        self.json_string = json_string or '{"delta":"","html":""}'
         self._committed = True
 
     def __eq__(self, other):
@@ -142,3 +142,7 @@ class QuillField(models.TextField):
         if isinstance(value, Quill):
             return value.json_string
         return value
+
+    def value_to_string(self, obj):
+        value = self.value_from_object(obj)
+        return self.get_prep_value(value)
