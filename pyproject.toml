@@ -3,6 +3,9 @@ name = "django-quill-editor"
 version = "0.1.0"
 description = ""
 authors = ["이한영 <dev@lhy.kr>"]
+packages = [
+    { include = "django_quill" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
