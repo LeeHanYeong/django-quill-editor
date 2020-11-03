@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 
 from .forms import QuillFormField
@@ -31,7 +33,7 @@ class FieldQuill:
 
     def _get_quill(self):
         self._require_quill()
-        self._quill = Quill(self.json_string)
+        self._quill = Quill(json.loads(self.json_string))
         return self._quill
 
     def _set_quill(self, quill):
