@@ -2,9 +2,13 @@
 <div class="vLargeTextField django-quill-widget-container">
     <div id="quill-{{ id }}" class="django-quill-widget" data-config="{{ config }}" data-type="django-quill"></div>
     <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden">
+    {% url 'quill-editor-upload' as upload_url %}
+    {% if not upload_url %}
+      {% url '' as upload_url %}
+    {% endif %}
     <script>
         (function () {
-            var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe }}'));
+            var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', '{{upload_url}}', JSON.parse('{{ config|safe }}'));
             {% if quill and quill.delta %}
                 // try django_quill/quill.py/Quill instance
                 var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
