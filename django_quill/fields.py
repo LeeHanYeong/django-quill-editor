@@ -1,29 +1,43 @@
+import json
+
 from django.db import models
 
-from .forms import QuillFormField
-from .quill import Quill
+from .forms import QuillFormJSONField
+from .quill import Quill, QuillParseError
 
 __all__ = (
     'FieldQuill',
     'QuillDescriptor',
     'QuillField',
+    'QuillTextField',
+    'QuillJSONField'
 )
 
 
 class FieldQuill:
-    def __init__(self, instance, field, json_string):
+    def __init__(self, instance, field, data):
         self.instance = instance
         self.field = field
-        self.json_string = json_string or '{"delta":"","html":""}'
+        self.data = data or dict(delta="", html="")
+
+        assert isinstance(self.data, (str, dict)), (
+                "FieldQuill expects dictionary or string as data but got %s(%s)." % (type(data), data)
+        )
+        if isinstance(self.data, str):
+            try:
+                self.data = json.loads(data)
+            except json.JSONDecodeError:
+                raise QuillParseError(data)
+
         self._committed = True
 
     def __eq__(self, other):
-        if hasattr(other, 'json_string'):
-            return self.json_string == other.json_string
-        return self.json_string == other
+        if hasattr(other, 'data'):
+            return self.data == other.data
+        return self.data == other
 
     def __hash__(self):
-        return hash(self.json_string)
+        return hash(self.data)
 
     def _require_quill(self):
         if not self:
@@ -31,7 +45,7 @@ class FieldQuill:
 
     def _get_quill(self):
         self._require_quill()
-        self._quill = Quill(self.json_string)
+        self._quill = Quill(self.data)
         return self._quill
 
     def _set_quill(self, quill):
@@ -78,7 +92,7 @@ class QuillDescriptor:
             instance.__dict__[self.field.name] = attr
 
         elif isinstance(quill, Quill) and not isinstance(quill, FieldQuill):
-            quill_copy = self.field.attr_class(instance, self.field, quill.json_string)
+            quill_copy = self.field.attr_class(instance, self.field, quill.data)
             quill_copy.quill = quill
             quill_copy._committed = False
             instance.__dict__[self.field.name] = quill_copy
@@ -96,37 +110,25 @@ class QuillDescriptor:
         instance.__dict__[self.field.name] = value
 
 
-class QuillField(models.TextField):
+class QuillFieldMixin:
     attr_class = FieldQuill
     descriptor_class = QuillDescriptor
 
     def formfield(self, **kwargs):
-        kwargs.update({'form_class': QuillFormField})
+        kwargs.update({'form_class': self._get_form_class()})
         return super().formfield(**kwargs)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
 
     @staticmethod
     def _get_form_class():
-        return QuillFormField
+        return QuillFormJSONField
 
     def pre_save(self, model_instance, add):
         quill = super().pre_save(model_instance, add)
         if quill and not quill._committed:
-            quill.save(quill.json_string, save=False)
+            quill.save(quill.data, save=False)
         return quill
 
-    def from_db_value(self, value, expression, connection):
-        return self.to_python(value)
-
     def to_python(self, value):
-        """
-        Expect a JSON string with 'delta' and 'html' keys
-        ex) b'{"delta": "...", "html": "..."}'
-        :param value: JSON string with 'delta' and 'html' keys
-        :return: Quill's 'Delta' JSON String
-        """
         if isinstance(value, Quill):
             return value
         if isinstance(value, FieldQuill):
@@ -136,13 +138,31 @@ class QuillField(models.TextField):
         return Quill(value)
 
     def get_prep_value(self, value):
-        value = super().get_prep_value(value)
-        if value is None:
+        if value is None or isinstance(value, str):
             return value
-        if isinstance(value, Quill):
-            return value.json_string
-        return value
+        if isinstance(value, (Quill, FieldQuill)):
+            value = value.data
+
+        return json.dumps(value, cls=getattr(self, 'encoder', None))
 
     def value_to_string(self, obj):
         value = self.value_from_object(obj)
         return self.get_prep_value(value)
+
+
+class QuillTextField(QuillFieldMixin, models.TextField):
+    pass
+
+
+def QuillField(*args, **kwargs):
+    return QuillTextField(*args, **kwargs)
+
+
+class QuillJSONField(QuillFieldMixin, models.JSONField):
+
+    def from_db_value(self, value, expression, connection):
+        return self.to_python(value)
+
+    def validate(self, value, model_instance):
+        value = self.get_prep_value(value)
+        super(QuillJSONField, self).validate(value, model_instance)

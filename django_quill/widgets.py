@@ -29,6 +29,8 @@ json_encode = LazyEncoder().encode
 
 
 class QuillWidget(forms.Textarea):
+    template_name = 'django_quill/widget.html'
+
     class Media:
         js = (
             'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js',
@@ -61,24 +63,12 @@ class QuillWidget(forms.Textarea):
             else:
                 raise ImproperlyConfigured('QUILL_CONFIGS settings must be a Mapping object')
 
-    def render(self, name, value, attrs=None, renderer=None):
-        if renderer is None:
-            renderer = get_default_renderer()
-        if value is None:
-            value = ''
+    def get_context(self, name, value, attrs):
+        context = super(QuillWidget, self).get_context(name, value, attrs)
+        context['widget']['config'] = json_encode(self.config)
+        print(context)
+        return context
 
-        attrs = attrs or {}
-        attrs['name'] = name
-        if hasattr(value, 'quill'):
-            attrs['quill'] = value.quill
-        else:
-            attrs['value'] = value
-        final_attrs = self.build_attrs(self.attrs, attrs)
-        return mark_safe(renderer.render('django_quill/widget.html', {
-            'final_attrs': flatatt(final_attrs),
-            'id': final_attrs['id'],
-            'name': final_attrs['name'],
-            'config': json_encode(self.config),
-            'quill': final_attrs.get('quill', None),
-            'value': final_attrs.get('value', None),
-        }))
+    def format_value(self, value):
+        return json_encode(value)
+
