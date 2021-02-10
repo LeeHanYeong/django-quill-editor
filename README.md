@@ -140,15 +140,17 @@ class EditorImageUploadAPIView(CreateAPIView):
 
 ## Usage
 
-Add `QuillField` to the **Model class** you want to use
+Add `QuillTextField` or `QuillJSONField` to the **Model class** you want to use.
 
 ```python
 # models.py
 from django.db import models
-from django_quill.fields import QuillField
+from django_quill.fields import QuillField, QuillTextField, QuillJSONField
 
 class QuillPost(models.Model):
-    content = QuillField()
+    content = QuillField()              # Deprecated. It is same with QuillTextField.
+    content = QuillTextField()
+    content = QuillJSONField()
 ```
 
 
@@ -172,7 +174,7 @@ class QuillPostAdmin(admin.ModelAdmin):
 
 ### 2. Form
 
-- Add `QuillFormField` to the **Form class** you want to use
+- Add `QuillFormJSONField` to the **Form class** you want to use
 
 - There are two ways to add CSS and JS files to a template.
 
@@ -198,10 +200,10 @@ class QuillPostAdmin(admin.ModelAdmin):
 ```python
 # forms.py
 from django import forms
-from django_quill.forms import QuillFormField
+from django_quill.forms import QuillFormJSONField
 
 class QuillFieldForm(forms.Form):
-    content = QuillFormField()
+    content = QuillFormJSONField()
 ```
 
 ```python

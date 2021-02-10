@@ -23,20 +23,20 @@ There are two ways to add CSS and JS files to a template.
 
     
 
-Add `QuillFormField` to the **Form class** you want to use.
+Add `QuillFormJSONField` to the **Form class** you want to use.
 
 ```python
 # forms.py
 from django import forms
-from django_quill.forms import QuillFormField
+from django_quill.forms import QuillFormJSONField
 
 class QuillFieldForm(forms.Form):
-    content = QuillFormField()
+    content = QuillFormJSONField()
 ```
 
 
 
-Add a **Form instance** containing **QuillFormField** to the template context in the view.
+Add a **Form instance** containing **QuillFormJSONField** to the template context in the view.
 
 ```python
 # views.py

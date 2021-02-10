@@ -1,14 +1,16 @@
 # Using as ModelForm
 
-Add `QuillField` to the **Model class** you want to use
+Add `QuillTextField` or `QuillJSONField` to the **Model class** you want to use. 
 
 ```python
 # models.py
 from django.db import models
-from django_quill.fields import QuillField
+from django_quill.fields import QuillField, QuillTextField, QuillJSONField
 
 class QuillPost(models.Model):
-    content = QuillField()
+    content = QuillField()              # Deprecated. It is same with QuillTextField.
+    content = QuillTextField()
+    content = QuillJSONField()
 ```
 
 
