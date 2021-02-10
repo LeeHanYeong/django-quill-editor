@@ -33,13 +33,13 @@ class QuillWidget(forms.Textarea):
         js = (
             'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js',
             'django_quill/django_quill.js',
-            'https://cdn.quilljs.com/1.3.6/quill.min.js',
+            'https://cdn.quilljs.com/1.3.7/quill.min.js',
         )
         css = {
             'all': (
                 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/darcula.min.css',
                 'django_quill/django_quill.css',
-                'https://cdn.quilljs.com/1.3.6/quill.snow.css',
+                'https://cdn.quilljs.com/1.3.7/quill.snow.css',
             )
         }
 
