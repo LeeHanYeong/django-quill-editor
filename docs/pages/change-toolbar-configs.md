@@ -15,7 +15,7 @@ It changes the settings only for `align` now. You can check the related
 QUILL_CONFIGS = {
     'default':{
         'theme': 'snow',
-        'useInlineStyleAttributes': True,                   # uses inline style attributes (for align). https://quilljs.com/guides/how-to-customize-quill/#class-vs-inline
+        'useInlineStyleAttributes': True,
         'modules': {
             'syntax': True,
             'toolbar': [

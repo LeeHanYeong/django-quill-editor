@@ -38,8 +38,6 @@ class EditorImageUploadAPIView(CreateAPIView):
 
 ```json
 {
-  ...
   "image_url": "https://xxx.s3.amazonaws.com/xxx/x.png"
-  ...
 }
 ```
