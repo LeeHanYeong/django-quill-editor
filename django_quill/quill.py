@@ -1,3 +1,4 @@
+import json
 
 __all__ = (
     'QuillParseError',
@@ -15,9 +16,15 @@ class QuillParseError(Exception):
 
 class Quill:
     def __init__(self, data):
-        assert isinstance(data, dict), (
-            "Quill expects dictionary as data but got %s(%s)." % (type(data), data)
+        assert isinstance(data, (str, dict)), (
+                "Quill expects dictionary or string as data but got %s(%s)." % (type(data), data)
         )
+        if isinstance(data, str):
+            try:
+                data = json.loads(data)
+            except json.JSONDecodeError:
+                raise QuillParseError(data)
+
         self.data = data
         try:
             self.delta = data['delta']
