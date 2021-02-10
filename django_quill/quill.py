@@ -1,5 +1,3 @@
-import json
-from json import JSONDecodeError
 
 __all__ = (
     'QuillParseError',
