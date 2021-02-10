@@ -32,7 +32,7 @@ class QuillWidget(forms.Textarea):
     class Media:
         js = (
             'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js',
-            'https://cdn.quilljs.com/1.3.6/quill.min.js',
+            'https://cdn.quilljs.com/1.3.7/quill.min.js',
             'https://unpkg.com/quill-image-uploader@1.2.2/dist/quill.imageUploader.min.js',
             'django_quill/django_quill.js',
         )
@@ -41,7 +41,7 @@ class QuillWidget(forms.Textarea):
                 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/darcula.min.css',
                 'django_quill/django_quill.css',
                 'https://unpkg.com/quill-image-uploader@1.2.2/dist/quill.imageUploader.min.css',
-                'https://cdn.quilljs.com/1.3.6/quill.snow.css',
+                'https://cdn.quilljs.com/1.3.7/quill.snow.css',
             )
         }
 
