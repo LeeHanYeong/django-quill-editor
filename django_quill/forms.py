@@ -1,3 +1,5 @@
+import warnings
+
 from django import forms
 from .widgets import QuillWidget
 
@@ -25,4 +27,5 @@ class QuillFormJSONField(forms.JSONField):
 
 
 def QuillFormField(*args, **kwargs):
+    warnings.warn('QuillFormField is deprecated in favor of QuillFormJSONField', stacklevel=2)
     return QuillFormJSONField(*args, **kwargs)

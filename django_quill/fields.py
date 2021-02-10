@@ -1,4 +1,5 @@
 import json
+import warnings
 
 from django.db import models
 
@@ -140,6 +141,7 @@ class QuillTextField(QuillFieldMixin, models.TextField):
 
 
 def QuillField(*args, **kwargs):
+    warnings.warn('QuillField is deprecated in favor of QuillTextField', stacklevel=2)
     return QuillTextField(*args, **kwargs)
 
 
