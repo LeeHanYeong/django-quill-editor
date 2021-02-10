@@ -61,10 +61,16 @@ Documentation for **django-quill-editor** is located at [https://django-quill-ed
 
 Add `QUILL_CONFIGS` to the **settings.py**
 
+If you want to use inline style attributes (`style="text-align: center;"`) instead of class (`class="ql-align-center"`)
+, set `useInlineStyleAttributes` to `True`.
+It changes the settings only for `align` now. You can check the related
+[Quill Docs](https://quilljs.com/guides/how-to-customize-quill/#class-vs-inline).
+
 ```python
 QUILL_CONFIGS = {
     'default':{
         'theme': 'snow',
+        'useInlineStyleAttributes': True,
         'modules': {
             'syntax': True,
             'toolbar': [
@@ -78,25 +84,73 @@ QUILL_CONFIGS = {
                 ],
                 ['code-block', 'link'],
                 ['clean'],
-            ]
+            ],
+            'imageUploader': {
+                'uploadURL': '/admin/quill/upload/',        # You can also use an absolute URL (https://example.com/3rd-party/uploader/)
+                'addCSRFTokenHeader': True,
+            }
         }
     }
 }
 ```
 
+## Image uploads
 
+If you want to upload images instead of storing encoded images in your database. You need to add `imageUploader` module
+to your configuration. If you set a `uploadURL` for this modules, it registers
+[quill-image-uploader](https://www.npmjs.com/package/quill-image-uploader) to Quill.
+You can add a view to upload images to your storage service. Response of the view must contain `image_url` field.
+
+```python
+# urls.py
+from django.urls import path
+from .views import EditorImageUploadAPIView
+
+urlpatterns = [
+   ...
+   path('admin/quill/upload/', EditorImageUploadAPIView.as_view(), name='quill-editor-upload'),
+   ...
+]
+```
+
+```python
+# You don't have to use Django Rest Framework. This is just an example.
+from rest_framework import status
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import IsAdminUser
+from rest_framework.response import Response
+
+from .serializers import EditorImageSerializer
+
+
+class EditorImageUploadAPIView(CreateAPIView):
+    serializer_class = EditorImageSerializer
+    permission_classes = (IsAdminUser,)
+
+    def post(self, request, *args, **kwargs):
+        # image_url = handle image upload
+        return Response({'image_url': "https://xxx.s3.amazonaws.com/xxx/x.png"}, status=status.HTTP_200_OK)
+```
+
+```json
+{
+  "image_url": "https://xxx.s3.amazonaws.com/xxx/x.png"
+}
+```
 
 ## Usage
 
-Add `QuillField` to the **Model class** you want to use
+Add `QuillTextField` or `QuillJSONField` to the **Model class** you want to use.
 
 ```python
 # models.py
 from django.db import models
-from django_quill.fields import QuillField
+from django_quill.fields import QuillField, QuillTextField, QuillJSONField
 
 class QuillPost(models.Model):
-    content = QuillField()
+    content = QuillField()              # Deprecated. It is same with QuillTextField.
+    content = QuillTextField()
+    content = QuillJSONField()
 ```
 
 
@@ -120,7 +174,7 @@ class QuillPostAdmin(admin.ModelAdmin):
 
 ### 2. Form
 
-- Add `QuillFormField` to the **Form class** you want to use
+- Add `QuillFormJSONField` to the **Form class** you want to use
 
 - There are two ways to add CSS and JS files to a template.
 
@@ -146,10 +200,10 @@ class QuillPostAdmin(admin.ModelAdmin):
 ```python
 # forms.py
 from django import forms
-from django_quill.forms import QuillFormField
+from django_quill.forms import QuillFormJSONField
 
 class QuillFieldForm(forms.Form):
-    content = QuillFormField()
+    content = QuillFormJSONField()
 ```
 
 ```python

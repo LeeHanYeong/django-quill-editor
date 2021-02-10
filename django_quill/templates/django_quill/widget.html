@@ -1,25 +1,19 @@
 {% load static %}
 <div class="vLargeTextField django-quill-widget-container">
-    <div id="quill-{{ id }}" class="django-quill-widget" data-config="{{ config }}" data-type="django-quill"></div>
-    <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden">
+    <div id="quill-{{ widget.attrs.id }}" class="django-quill-widget" data-config="{{ widget.config }}" data-type="django-quill"></div>
+    <input id="quill-input-{{ widget.attrs.id }}" name="{{ widget.name }}" type="hidden">
     <script>
         (function () {
-            var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe }}'));
-            {% if quill and quill.delta %}
-                // try django_quill/quill.py/Quill instance
-                var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
+            var wrapper = new QuillWrapper('quill-{{ widget.attrs.id }}', 'quill-input-{{ widget.attrs.id }}', JSON.parse('{{ widget.config|safe }}'));
+            try {
+                var value = JSON.parse('{{ widget.value|safe|escapejs }}');
+                var contents = JSON.parse(value.delta);
                 wrapper.quill.setContents(contents);
-            {% elif value %}
-                // try Parsing value as JSON
-                try {
-                    var value = JSON.parse('{{ value|safe|escapejs }}');
-                    wrapper.quill.setContents(JSON.parse(value['delta']));
-                }
-                // When a parsing error occurs, the contents are regarded as HTML and the contents of the editor are filled.
-                catch (e) {
-                    wrapper.quill.clipboard.dangerouslyPasteHTML(0, '{{ value|safe }}')
-                }
-            {% endif %}
-        })();
+            }
+            // When a parsing error occurs, the contents are regarded as HTML and the contents of the editor are filled.
+            catch (e) {
+                wrapper.quill.clipboard.dangerouslyPasteHTML(0, '{{ value|safe }}')
+            }
+    })();
     </script>
 </div>
