@@ -2,6 +2,7 @@ DEFAULT_CONFIG = {
     'theme': 'snow',
     'modules': {
         'syntax': True,
+        'magicUrl': True,
         'toolbar': [
             [
                 {'font': []},
