@@ -14,4 +14,4 @@ class QuillFormField(forms.fields.JSONField):
         super().__init__(*args, **kwargs)
 
     def prepare_value(self, value):
-        return value.json_string
+        return value.json_string if value else None
