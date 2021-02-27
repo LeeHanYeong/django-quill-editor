@@ -11,7 +11,7 @@ setup(
     name='django-quill-editor',
     version=VERSION,
     url='https://github.com/LeeHanYeong/django-quill-editor',
-    author='Lee HanYeong',
+    author='lhy',
     author_email='dev@lhy.kr',
     license='MIT',
 
@@ -22,14 +22,14 @@ setup(
     packages=find_packages(exclude=['test*', 'sample']),
     include_package_data=True,
     install_requires=[
-        'django',
+        'django>3.0',
     ],
     python_requires=">3.5",
     zip_safe=True,
     classifiers=[
         'Framework :: Django',
-        'Framework :: Django :: 2.2',
         'Framework :: Django :: 3.1',
+        'Framework :: Django :: 3.2',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
