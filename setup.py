@@ -24,7 +24,7 @@ setup(
     install_requires=[
         'django>3.0',
     ],
-    python_requires=">3.5",
+    python_requires=">3.6",
     zip_safe=True,
     classifiers=[
         'Framework :: Django',
