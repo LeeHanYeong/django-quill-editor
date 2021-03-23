@@ -10,9 +10,23 @@
 
 ![django-quill-editor](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/django-quill-editor-sample.png)
 
-## Setup
+
+
+## Documentation
+
+The full document is in [https://django-quill-editor.readthedocs.io/](https://django-quill-editor.readthedocs.io/), including everything about how to use the Form or ModelForm, and where you can add custom settings.
+
+Please refer to the **QuickStart** section below for simple usage.
+
+
+
+## QuickStart
+
+### Setup
 
 - Install `django-quill-editor` to your Python environment
+
+  > Requires Python 3.7 or higher and Django 3.1 or higher.
 
   ```shell
   pip install django-quill-editor
@@ -29,66 +43,12 @@
   ]
   ```
 
+### Making Model
 
+Add `QuillField` to the **Model class** you want to use.
 
-## Run Sample project
-
-Repo: [django-quill-editor-sample](https://github.com/LeeHanYeong/django-quill-editor-sample)
-
-```shell
-# Clone repo
-git clone https://github.com/LeeHanYeong/django-quill-editor-sample
-cd django-quill-editor-sample
-
-# Create virtualenv (I used pyenv, but you can use other methods)
-pyenv virtualenv 3.7.5 django-quill
-pyenv local django-quill
-
-# Install Python packages
-pip install -r requirements.txt
-python app/manage.py runserver
-```
-
-
-
-## Documentation
-
-Documentation for **django-quill-editor** is located at [https://django-quill-editor.readthedocs.io/](https://django-quill-editor.readthedocs.io/)
-
-
-
-## Change toolbar configs
-
-Add `QUILL_CONFIGS` to the **settings.py**
-
-```python
-QUILL_CONFIGS = {
-    'default':{
-        'theme': 'snow',
-        'modules': {
-            'syntax': True,
-            'toolbar': [
-                [
-                    {'font': []},
-                    {'header': []},
-                    {'align': []},
-                    'bold', 'italic', 'underline', 'strike', 'blockquote',
-                    {'color': []},
-                    {'background': []},
-                ],
-                ['code-block', 'link'],
-                ['clean'],
-            ]
-        }
-    }
-}
-```
-
-
-
-## Usage
-
-Add `QuillField` to the **Model class** you want to use
+> 1. App containing models.py must be added to INSTALLED_APPS
+> 2. After adding the app, you need to run makemigrations and migrate to create the DB table.
 
 ```python
 # models.py
@@ -99,9 +59,7 @@ class QuillPost(models.Model):
     content = QuillField()
 ```
 
-
-
-### 1. Django admin
+### Using in admin
 
 Just register the Model in **admin.py** of the app.
 
@@ -115,97 +73,6 @@ class QuillPostAdmin(admin.ModelAdmin):
 ```
 
 ![admin-sample](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/admin-sample.png)
-
-
-
-### 2. Form
-
-- Add `QuillFormField` to the **Form class** you want to use
-
-- There are two ways to add CSS and JS files to a template.
-
-  - If there is a **Form** with QuillField added, add `{{ form.media }}` to the `<head>` tag.  
-
-    ```django
-    <head>
-        {{ form.media }}
-    </head>
-    ```
-
-  - Or, import CSS and JS files directly using `{% include %}` template tags.
-
-    ```django
-    <head>
-        <!-- django-quill-editor Media -->
-        {% include 'django_quill/media.html' %}
-    </head>
-    ```
-
-    
-
-```python
-# forms.py
-from django import forms
-from django_quill.forms import QuillFormField
-
-class QuillFieldForm(forms.Form):
-    content = QuillFormField()
-```
-
-```python
-# views.py
-from django.shortcuts import render
-from .forms import QuillFieldForm
-
-def form(request):
-    return render(request, 'form.html', {'form': QuillFieldForm()})
-```
-
-```django
-<!-- Template -->
-<form action="" method="POST">{% csrf_token %}
-    {{ form.content }}
-</form>
-```
-
-
-
-### 3. ModelForm
-
-Just define and use **ModelForm** of Model class
-
-```python
-# forms.py
-from django import forms
-from .models import QuillPost
-
-class QuillPostForm(forms.ModelForm):
-    class Meta:
-        model = QuillPost
-        fields = (
-            'content',
-        )
-```
-
-```python
-# views.py
-from django.shortcuts import render
-from .forms import QuillPostForm
-
-def model_form(request):
-    return render(request, 'model_form.html', {'form': QuillPostForm()})
-```
-
-```django
-<!-- Template -->
-<form action="" method="POST">{% csrf_token %}
-    {{ form.content }}
-</form>
-```
-
-**Form, ModelForm's Output:**
-
-![form-sample](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/form-sample.png)
 
 
 
@@ -245,3 +112,4 @@ cd _build/html
 python -m http.server 3001
 ```
 
+ 
