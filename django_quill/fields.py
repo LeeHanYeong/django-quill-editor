@@ -1,5 +1,3 @@
-import json
-
 from django.db import models
 
 from .forms import QuillFormField
@@ -33,7 +31,7 @@ class FieldQuill:
 
     def _get_quill(self):
         self._require_quill()
-        self._quill = Quill(json.loads(self.json_string))
+        self._quill = Quill(self.json_string)
         return self._quill
 
     def _set_quill(self, quill):
@@ -112,12 +110,6 @@ class QuillField(models.TextField):
     @staticmethod
     def _get_form_class():
         return QuillFormField
-
-    def pre_save(self, model_instance, add):
-        quill = super().pre_save(model_instance, add)
-        if quill and not quill._committed:
-            quill.save(quill.json_string, save=False)
-        return quill
 
     def from_db_value(self, value, expression, connection):
         return self.to_python(value)

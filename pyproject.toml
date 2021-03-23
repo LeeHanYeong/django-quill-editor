@@ -16,6 +16,7 @@ coverage = "^5.0.3"
 codecov = "^2.0.16"
 Django = ">3.0"
 tox = "^3.14.5"
+model-bakery = "^1.2.1"
 
 [tool.poetry.dev-dependencies]
 twine = "^3.1.1"
