@@ -6,12 +6,9 @@ __all__ = (
 )
 
 
-class QuillFormField(forms.fields.JSONField):
+class QuillFormField(forms.fields.CharField):
     def __init__(self, *args, **kwargs):
         kwargs.update({
             'widget': QuillWidget(),
         })
         super().__init__(*args, **kwargs)
-
-    def prepare_value(self, value):
-        return value.json_string if value else None
