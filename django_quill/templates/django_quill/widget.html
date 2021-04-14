@@ -17,7 +17,7 @@
                 }
                 // When a parsing error occurs, the contents are regarded as HTML and the contents of the editor are filled.
                 catch (e) {
-                    wrapper.quill.clipboard.dangerouslyPasteHTML(0, '{{ value|safe }}')
+                    wrapper.quill.clipboard.dangerouslyPasteHTML(0, '{{ value|escape|safe }}')
                 }
             {% endif %}
         })();
