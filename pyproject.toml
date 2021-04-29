@@ -2,7 +2,7 @@
 name = "django-quill-editor"
 version = "0.1.0"
 description = ""
-authors = ["lhy <dev@lhy.kr>"]
+authors = ["이한영 <dev@lhy.kr>"]
 packages = [
     { include = "django_quill" },
 ]
