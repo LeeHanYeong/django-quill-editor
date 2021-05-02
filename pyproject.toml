@@ -8,7 +8,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">3.6"
+python = ">3.6,<4"
 django = "^3.2"
 
 [tool.poetry.dev-dependencies]
@@ -17,7 +17,6 @@ setuptools = "^45.2.0"
 wheel = "^0.34.2"
 notebook = "^6.0.3"
 django-extensions = "^2.2.8"
-django = "^3.0"
 pytest = "^5.3"
 pytest-django = "^3.8"
 pytest-cov = "^2.8"
