@@ -1,7 +1,7 @@
 [run]
 source =
     django_quill
-    playground
+    testproject
 omit =
     */test*
     */migrations/*
