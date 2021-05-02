@@ -2,9 +2,24 @@
 name = "django-quill-editor"
 version = "0.2.0"
 description = ""
-authors = ["이한영 <dev@lhy.kr>", "michaldyczko", "Jonhnatha Trigueiro <joepreludian@gmail.com>"]
+authors = [
+    "이한영 <dev@lhy.kr>",
+    "michaldyczko",
+    "Jonhnatha Trigueiro <joepreludian@gmail.com>"
+]
+
 packages = [
     { include = "django_quill" },
+]
+
+classifiers = [
+    'Framework :: Django',
+    'Framework :: Django :: 3.1',
+    'Framework :: Django :: 3.2',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Development Status :: 4 - Beta'
 ]
 
 [tool.poetry.dependencies]
