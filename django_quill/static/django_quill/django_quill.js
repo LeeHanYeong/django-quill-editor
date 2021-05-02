@@ -16,6 +16,8 @@ class QuillWrapper {
     }
 }
 
+DJANGO_QUILL_OPTIONS = null; //This variable will be set inside widget.html;
+
 (function($) {
 
     $(function(){
@@ -51,7 +53,7 @@ class QuillWrapper {
                         $(quill_container).find('.ql-toolbar').remove();
 
                         console.log(quill_widget.id, quill_input.id);
-                        new QuillWrapper(quill_widget.id, quill_input.id,{"theme": "snow", "modules": {"syntax": true, "toolbar": [[{"font": []}, {"header": []}, {"align": []}, "bold", "italic", "underline", "strike", "blockquote", {"color": []}, {"background": []}], ["code-block", "link", "image"], ["clean"]]}} );
+                        new QuillWrapper(quill_widget.id, quill_input.id, DJANGO_QUILL_OPTIONS);
 
                         $(quill_widget).data('is_quill_enabled', '1');
                     }
@@ -59,14 +61,6 @@ class QuillWrapper {
             }
 
         });
-
-        //if (formsetName == 'author_set') {
-        // Do something
-        //}
-    });
-
-    $(document).on('formset:removed', function(event, $row, formsetName) {
-        // Row removed
     });
 
 })(django.jQuery);

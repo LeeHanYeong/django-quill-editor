@@ -4,7 +4,9 @@
     <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden" class="django-quill-widget-input">
     <script>
     (function($) {
-        let wrapper = new QuillWrapper("quill-{{ id }}", "quill-input-{{ id }}", JSON.parse('{{ config|safe }}'));
+        DJANGO_QUILL_OPTIONS = {{ config|safe }};
+
+        let wrapper = new QuillWrapper("quill-{{ id }}", "quill-input-{{ id }}", DJANGO_QUILL_OPTIONS);
         {% if quill and quill.delta %}
             var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
             wrapper.quill.setContents(contents);
