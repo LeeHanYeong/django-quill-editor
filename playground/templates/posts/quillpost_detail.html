@@ -1,6 +1,0 @@
-{% extends 'posts/base_posts.html' %}
-
-{% block title %}Post Detail (pk: {{ object.pk }}){% endblock %}
-{% block posts_content %}
-    {% include 'posts/quillpost.html' with post=object %}
-{% endblock %}

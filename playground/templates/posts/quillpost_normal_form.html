@@ -1,9 +1,0 @@
-{% extends 'posts/base_posts.html' %}
-
-{% block title %}Post Create (NormalForm){% endblock %}
-{% block posts_content %}
-    <form action="" method="POST">{% csrf_token %}
-        {{ form.content }}
-        <button type="submit" class="btn btn-primary btn-block mt-1">Create</button>
-    </form>
-{% endblock %}
