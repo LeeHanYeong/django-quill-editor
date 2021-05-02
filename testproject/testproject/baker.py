@@ -3,10 +3,6 @@ import json
 from django.utils.functional import LazyObject
 from model_bakery import baker as default_baker
 
-__all__ = (
-    "baker",
-)
-
 
 class LazyBaker(LazyObject):
     @staticmethod

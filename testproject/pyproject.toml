@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "testproject"
+version = "0.1.0"
+description = "Test project for evaluate django-quill-editor"
+authors = ["Jonhnatha Trigueiro <joepreludian@gmail.com>"]
+license = "GPLv3"
+
+[tool.poetry.dependencies]
+python = ">3.6"
+Django = "^3.2"
+model-bakery = "^1.3.1"
+django-quill-editor = {path = "../", develop=true}
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
