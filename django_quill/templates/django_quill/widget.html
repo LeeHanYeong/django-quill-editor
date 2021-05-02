@@ -1,48 +1,17 @@
 {% load static %}
 <div class="vLargeTextField django-quill-widget-container">
     <div id="quill-{{ id }}" class="django-quill-widget" data-config="{{ config }}" data-type="django-quill"></div>
-    <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden">
+    <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden" class="django-quill-widget-input">
     <script>
-        {% if "__prefix__" in id %}
-            $(document).on('DOMNodeInserted', function(e){
-                var node = $(e.target);
-                if(node.find('#quill-{{ id }}').length > 0){
-                    var totalFormsInput = $('input[id="' + "{{ id }}".replace(/__prefix__.*/g, "TOTAL_FORMS") + '"]')
-                    var totalForms = totalFormsInput.val();
-                    
-                    var targetDiv = $('#quill-{{ id }}');
-                    targetDiv.prop('id', targetDiv.attr('id').replace(/__prefix__/g, totalForms));
-                    var targetDivId = targetDiv.prop('id')
-
-                    var targetInput = $('#quill-input-{{ id }}');
-                    targetInput.prop('id', targetInput.attr('id').replace(/__prefix__/g, totalForms));
-                    var targetInputId = targetInput.prop('id')
-
-                    totalFormsInput.val(totalForms + 1);
-
-                    (function () {
-                        var wrapper = new QuillWrapper(targetDivId, targetInputId, JSON.parse('{{ config|safe }}'));
-                        {% if quill and quill.delta %}
-                            var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
-                            wrapper.quill.setContents(contents);
-                        {% elif value %}
-                            var value = JSON.parse('{{ value|safe|escapejs }}');
-                            wrapper.quill.setContents(JSON.parse(value['delta']));
-                        {% endif %}
-                    })(); 
-                }
-            });
-        {% else %}
-            (function () {
-                var wrapper = new QuillWrapper("quill-{{ id }}", "quill-input-{{ id }}", JSON.parse('{{ config|safe }}'));
-                {% if quill and quill.delta %}
-                    var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
-                    wrapper.quill.setContents(contents);
-                {% elif value %}
-                    var value = JSON.parse('{{ value|safe|escapejs }}');
-                    wrapper.quill.setContents(JSON.parse(value['delta']));
-                {% endif %}
-            })(); 
+    (function($) {
+        let wrapper = new QuillWrapper("quill-{{ id }}", "quill-input-{{ id }}", JSON.parse('{{ config|safe }}'));
+        {% if quill and quill.delta %}
+            var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
+            wrapper.quill.setContents(contents);
+        {% elif value %}
+            var value = JSON.parse('{{ value|safe|escapejs }}');
+            wrapper.quill.setContents(JSON.parse(value['delta']));
         {% endif %}
+    })(django.jQuery);
     </script>
 </div>
