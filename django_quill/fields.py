@@ -4,9 +4,9 @@ from .forms import QuillFormField
 from .quill import Quill
 
 __all__ = (
-    'FieldQuill',
-    'QuillDescriptor',
-    'QuillField',
+    "FieldQuill",
+    "QuillDescriptor",
+    "QuillField",
 )
 
 
@@ -18,7 +18,7 @@ class FieldQuill:
         self._committed = True
 
     def __eq__(self, other):
-        if hasattr(other, 'json_string'):
+        if hasattr(other, "json_string"):
             return self.json_string == other.json_string
         return self.json_string == other
 
@@ -27,7 +27,10 @@ class FieldQuill:
 
     def _require_quill(self):
         if not self:
-            raise ValueError("The '%s' attribute has no Quill JSON String associated with it." % self.field.name)
+            raise ValueError(
+                "The '%s' attribute has no Quill JSON String associated with it."
+                % self.field.name
+            )
 
     def _get_quill(self):
         self._require_quill()
@@ -83,7 +86,7 @@ class QuillDescriptor:
             quill_copy._committed = False
             instance.__dict__[self.field.name] = quill_copy
 
-        elif isinstance(quill, FieldQuill) and not hasattr(quill, 'field'):
+        elif isinstance(quill, FieldQuill) and not hasattr(quill, "field"):
             quill.instance = instance
             quill.field = self.field
 
@@ -101,7 +104,7 @@ class QuillField(models.TextField):
     descriptor_class = QuillDescriptor
 
     def formfield(self, **kwargs):
-        kwargs.update({'form_class': QuillFormField})
+        kwargs.update({"form_class": QuillFormField})
         return super().formfield(**kwargs)
 
     def __init__(self, *args, **kwargs):

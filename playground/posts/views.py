@@ -6,13 +6,13 @@ from .forms import QuillFieldForm, QuillPostForm
 from .models import QuillPost
 
 __all__ = (
-    'QuillPostListView',
-    'QuillPostCreateView',
-    'QuillPostDetailView',
-    'QuillPostUpdateView',
-    'QuillFieldFormView',
-    'QuillFieldFormHtmlInitialView',
-    'QuillFieldFormTextInitialView',
+    "QuillPostListView",
+    "QuillPostCreateView",
+    "QuillPostDetailView",
+    "QuillPostUpdateView",
+    "QuillFieldFormView",
+    "QuillFieldFormHtmlInitialView",
+    "QuillFieldFormTextInitialView",
 )
 
 
@@ -22,7 +22,7 @@ class QuillPostListView(ListView):
 
 class QuillPostCreateView(CreateView):
     form_class = QuillPostForm
-    template_name = 'posts/quillpost_create.html'
+    template_name = "posts/quillpost_create.html"
 
 
 class QuillPostDetailView(DetailView):
@@ -31,30 +31,30 @@ class QuillPostDetailView(DetailView):
 
 class QuillPostUpdateView(UpdateView):
     model = QuillPost
-    fields = ['content']
+    fields = ["content"]
 
 
 # NormalForm
 class QuillFieldFormView(FormView):
     form_class = QuillFieldForm
-    template_name = 'posts/quillpost_normal_form.html'
+    template_name = "posts/quillpost_normal_form.html"
 
     def form_valid(self, form):
         self.object = form.save()
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('posts:quill-post-detail', args=(self.object.pk,))
+        return reverse("posts:quill-post-detail", args=(self.object.pk,))
 
 
 class QuillFieldFormHtmlInitialView(QuillFieldFormView):
     initial = {
-        'content': f'<h1>django-quill-editor</h1><br>'
-                   f'<img src="{settings.TITLE_IMG}">',
+        "content": f"<h1>django-quill-editor</h1><br>"
+        f'<img src="{settings.TITLE_IMG}">',
     }
 
 
 class QuillFieldFormTextInitialView(QuillFieldFormView):
     initial = {
-        'content': 'django-quill-editor makes Quill.js easy to use on Django Forms and admin sites',
+        "content": "django-quill-editor makes Quill.js easy to use on Django Forms and admin sites",
     }

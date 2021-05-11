@@ -8,24 +8,24 @@ from playground.posts.forms import QuillPostForm, QuillFieldForm
 from playground.posts.models import QuillPost
 
 __all__ = (
-    'IndexView',
-    'ResetView',
+    "IndexView",
+    "ResetView",
 )
 
 
 class IndexView(CreateView):
-    template_name = 'index.html'
+    template_name = "index.html"
     form_class = QuillPostForm
-    success_url = reverse_lazy('posts:quill-post-list')
+    success_url = reverse_lazy("posts:quill-post-list")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['normal_form'] = QuillFieldForm()
-        context['title_img'] = settings.TITLE_IMG
+        context["normal_form"] = QuillFieldForm()
+        context["title_img"] = settings.TITLE_IMG
         return context
 
 
 class ResetView(View):
     def post(self, request):
         QuillPost.objects.all().delete()
-        return redirect(reverse('posts:quill-post-list'))
+        return redirect(reverse("posts:quill-post-list"))
