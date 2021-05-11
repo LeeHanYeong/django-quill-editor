@@ -4,35 +4,33 @@ import os
 from setuptools import find_packages, setup
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-README = open(os.path.join(ROOT_DIR, 'README.md')).read()
-VERSION = open(os.path.join(ROOT_DIR, 'version.txt')).read()
+README = open(os.path.join(ROOT_DIR, "README.md")).read()
+VERSION = open(os.path.join(ROOT_DIR, "version.txt")).read()
 
 setup(
-    name='django-quill-editor',
+    name="django-quill-editor",
     version=VERSION,
-    url='https://github.com/LeeHanYeong/django-quill-editor',
-    author='lhy',
-    author_email='dev@lhy.kr',
-    license='MIT',
-
-    description='Integrate Quill editor with Django project.',
+    url="https://github.com/LeeHanYeong/django-quill-editor",
+    author="lhy",
+    author_email="dev@lhy.kr",
+    license="MIT",
+    description="Integrate Quill editor with Django project.",
     long_description=README,
-    long_description_content_type='text/markdown',
-
-    packages=find_packages(exclude=['test*', 'sample']),
+    long_description_content_type="text/markdown",
+    packages=find_packages(exclude=["test*", "sample"]),
     include_package_data=True,
     install_requires=[
-        'django>3.0',
+        "django>=3.0",
     ],
     python_requires=">3.6",
     zip_safe=True,
     classifiers=[
-        'Framework :: Django',
-        'Framework :: Django :: 3.1',
-        'Framework :: Django :: 3.2',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Development Status :: 4 - Beta',
-    ]
+        "Framework :: Django",
+        "Framework :: Django :: 3.1",
+        "Framework :: Django :: 3.2",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Development Status :: 4 - Beta",
+    ],
 )

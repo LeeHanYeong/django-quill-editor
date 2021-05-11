@@ -83,7 +83,18 @@ The code lives on [GitHub](https://github.com/LeeHanYeong/django-quill-editor)
 
 
 
-## Distribution (for owners)
+## Distribution tips (for owners)
+
+### Installation
+
+```shell
+# black
+brew install black
+
+# pre-commit
+brew install pre-commit
+pre-commit install
+```
 
 ### PyPI Release
 
@@ -91,8 +102,6 @@ The code lives on [GitHub](https://github.com/LeeHanYeong/django-quill-editor)
 poetry install  # Install PyPI distribution packages
 python deploy.py
 ```
-
-
 
 ### Sphinx docs
 

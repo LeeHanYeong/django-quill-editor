@@ -1,8 +1,8 @@
 import json
 
 __all__ = (
-    'QuillParseError',
-    'Quill',
+    "QuillParseError",
+    "Quill",
 )
 
 
@@ -11,7 +11,7 @@ class QuillParseError(Exception):
         self.value = value
 
     def __str__(self):
-        return 'Failed to parse value(%s)' % self.value
+        return "Failed to parse value(%s)" % self.value
 
 
 class Quill:
@@ -19,7 +19,7 @@ class Quill:
         try:
             self.json_string = json_string
             json_data = json.loads(json_string)
-            self.delta = json_data['delta']
-            self.html = json_data.get('html', '')
+            self.delta = json_data["delta"]
+            self.html = json_data.get("html", "")
         except (json.JSONDecodeError, KeyError, TypeError):
             raise QuillParseError(json_string)

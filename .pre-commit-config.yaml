@@ -1,0 +1,29 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: end-of-file-fixer
+        files: .*\.py
+
+      - id: trailing-whitespace
+        files: .*\.py
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        description: "Black: The uncompromising Python code formatter"
+        entry: black
+        language: python
+        language_version: python3
+        require_serial: true
+        types: [ python ]
+
+      - id: poetry-export
+        name: Poetry export requirements
+        language: system
+        entry: bash -c '
+          poetry export --without-hashes -o requirements.txt &&
+          poetry export --without-hashes --dev -o requirements_dev.txt &&
+          git add requirements*.txt'
+        files: pyproject.toml|poetry.lock

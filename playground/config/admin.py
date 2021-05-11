@@ -2,9 +2,7 @@ from django.contrib.admin import AdminSite as BaseAdminSite
 from django.contrib.auth import authenticate
 from django.forms import forms
 
-__all__ = (
-    'AdminSite',
-)
+__all__ = ("AdminSite",)
 
 
 class LoginForm(forms.Form):
@@ -23,4 +21,4 @@ class LoginForm(forms.Form):
 
 class AdminSite(BaseAdminSite):
     login_form = LoginForm
-    login_template = 'admin/login_without_credentials.html'
+    login_template = "admin/login_without_credentials.html"

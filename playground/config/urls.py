@@ -18,14 +18,11 @@ from django.urls import path, include
 
 from . import views
 
-__all__ = (
-    'urlpatterns',
-)
+__all__ = ("urlpatterns",)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.IndexView.as_view(), name='index'),
-    path('reset/', views.ResetView.as_view(), name='reset'),
-
-    path('posts/', include('playground.posts.urls')),
+    path("admin/", admin.site.urls),
+    path("", views.IndexView.as_view(), name="index"),
+    path("reset/", views.ResetView.as_view(), name="reset"),
+    path("posts/", include("playground.posts.urls")),
 ]
