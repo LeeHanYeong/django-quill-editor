@@ -14,7 +14,7 @@ pytest-django = "^3.8.0"
 pytest-cov = "^2.8.1"
 coverage = "^5.0.3"
 codecov = "^2.0.16"
-Django = ">3.0"
+Django = "^3"
 tox = "^3.14.5"
 model-bakery = "^1.2.1"
 
