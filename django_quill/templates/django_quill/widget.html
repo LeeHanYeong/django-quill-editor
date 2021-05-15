@@ -4,6 +4,7 @@
     <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden">
     <script>
         (function () {
+            Quill.register('modules/magicUrl', MagicUrl);
             var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe }}'));
             {% if quill and quill.delta %}
                 // try django_quill/quill.py/Quill instance
