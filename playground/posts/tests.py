@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from playground.config import baker
-from playground.posts.models import QuillPost
+from config import baker
+from posts.models import QuillPost
 
 
 class QuillViewTest(TestCase):

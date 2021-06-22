@@ -22,7 +22,7 @@ MEDIA_ROOT = BASE_DIR / ".media"
 
 # Custom
 AUTHENTICATION_BACKENDS = [
-    "playground.config.backends.StaticBackend",
+    "config.backends.StaticBackend",
 ]
 TITLE_IMG = (
     "https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/"
@@ -30,8 +30,8 @@ TITLE_IMG = (
 )
 
 INSTALLED_APPS = [
-    "playground.posts",
-    "playground.config.apps.AdminConfig",
+    "posts",
+    "config.apps.AdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     "django_quill",
 ]
 
-ROOT_URLCONF = "playground.config.urls"
-WSGI_APPLICATION = "playground.config.wsgi.application"
+ROOT_URLCONF = "config.urls"
+WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",

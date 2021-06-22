@@ -4,8 +4,8 @@ from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import CreateView
 
-from playground.posts.forms import QuillPostForm, QuillFieldForm
-from playground.posts.models import QuillPost
+from posts.forms import QuillPostForm, QuillFieldForm
+from posts.models import QuillPost
 
 __all__ = (
     "IndexView",
