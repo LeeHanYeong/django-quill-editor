@@ -4,4 +4,4 @@ __all__ = ("AdminConfig",)
 
 
 class AdminConfig(DefaultAdminConfig):
-    default_site = "playground.config.admin.AdminSite"
+    default_site = "config.admin.AdminSite"
