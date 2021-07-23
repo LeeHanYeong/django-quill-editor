@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-quill-editor"
-version = "0.2.0"
+version = "0.2.1"
 description = ""
 authors = [
     "이한영 <dev@lhy.kr>",
@@ -24,7 +24,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">3.6,<4"
-django = "^3.2"
+django = ">=3, <4"
 
 [tool.poetry.dev-dependencies]
 Sphinx = "^3.1"
