@@ -22,7 +22,7 @@ tox = "^3.14.5"
 twine = "^3.1.1"
 setuptools = "^45.2.0"
 wheel = "^0.34.2"
-notebook = "^6.0.3"
+notebook = "^6.4.1"
 django-extensions = "^2.2.8"
 
 # Doc
