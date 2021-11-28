@@ -1,4 +1,4 @@
-# django-quill-editor
+# django-quill-editor-ng
 
 ![PyPI](https://img.shields.io/pypi/v/django-quill-editor)
 
@@ -7,17 +7,24 @@
 - **No configuration required for static files!**
 - The entire code for inserting WYSIWYG editor is less than 30 lines
 - It can be used in both admin and Django views
+- It is a Forked version of the original `django-quill-editor` with some improvements.
+  - The main difference is that I performed some changes in order to get this supported inside django inlines;
+  - Also, I added compatibility with `django-jazzmin`
+
+Actually the following versions are supported
+
+| Django | Quill | Python |
+| ---    | ---   | ---    |
+| 3.2+   | 1.3.7 | 3.6+   |
+
 
 ![django-quill-editor](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/django-quill-editor-sample.png)
-
-
 
 ## Documentation
 
 The full document is in [https://django-quill-editor.readthedocs.io/](https://django-quill-editor.readthedocs.io/), including everything about how to use the Form or ModelForm, and where you can add custom settings.
 
 Please refer to the **QuickStart** section below for simple usage.
-
 
 
 ## QuickStart
@@ -74,42 +81,17 @@ class QuillPostAdmin(admin.ModelAdmin):
 
 ![admin-sample](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/admin-sample.png)
 
-
-
 ## Contributing
 
 As an open source project, we welcome contributions.
-The code lives on [GitHub](https://github.com/LeeHanYeong/django-quill-editor)
+The code lives on [GitHub](https://github.com/joepreludian/django-quill-editor-ng)
 
 
+## Developing the library locally
 
-## Distribution (for owners)
-
-### PyPI Release
-
-```shell
-poetry install  # Install PyPI distribution packages
-python deploy.py
-```
-
-
-
-### Sphinx docs
+First of all, install all the dependencies used by this repo by using poetry. Make sure that `poetry` is installed accordingly.
 
 ```shell
-brew install sphinx-doc  # macOS
+$ cd testproject
+$ ./start_development.sh  # it will do all the magic for you
 ```
-
-#### Local
-
-```
-cd docs
-make html
-# ...
-# The HTML pages are in _build/html.
-
-cd _build/html
-python -m http.server 3001
-```
-
- 
