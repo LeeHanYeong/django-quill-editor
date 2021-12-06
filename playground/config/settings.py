@@ -21,6 +21,8 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / ".media"
 
 # Custom
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 AUTHENTICATION_BACKENDS = [
     "config.backends.StaticBackend",
 ]

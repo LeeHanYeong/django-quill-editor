@@ -13,6 +13,6 @@ if __name__ == "__main__":
     open(VERSION_FILE, "wt").write(new_version)
 
     # Generating distribution archives
-    subprocess.run("python setup.py sdist bdist_wheel", shell=True)
+    subprocess.run("python -m build", shell=True)
     # Upload the distribution archives
     subprocess.run("twine upload dist/*", shell=True)

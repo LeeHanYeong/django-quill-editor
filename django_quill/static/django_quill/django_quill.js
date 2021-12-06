@@ -1,3 +1,5 @@
+Quill.register("modules/imageCompressor", imageCompressor);
+
 class QuillWrapper {
     constructor(targetDivId, targetInputId, quillOptions) {
         this.targetDiv = document.getElementById(targetDivId);

@@ -2,19 +2,19 @@
 
 {% block content %}
     <div class="container">
-        <div class="row mb-2">
-            <div class="col-12 col-md-3 col-lg-3">
-                <h3>{% block title %}title{% endblock %}</h3>
+        <div class="row d-flex align-items-center mb-3">
+            <div class="col-12 col-md-12 col-lg-3 mb-sm-2 mb-xs-2">
+                <h4 class="mb-0">{% block title %}title{% endblock %}</h4>
             </div>
-            <div class="col-12 col-md-9 col-lg-9">
+            <div class="col-12 col-md-12 col-lg-9">
                 <div class="d-flex justify-content-end">
                     <form action="{% url 'reset' %}" method="POST">{% csrf_token %}
-                        <button type="submit" class="btn btn-danger mr-4">Delete all posts</button>
+                        <button type="submit" class="btn btn-danger me-4">Delete all posts</button>
                     </form>
-                    <a href="{% url 'posts:quill-post-create-normal' %}" class="btn btn-primary mr-1">Form</a>
-                    <a href="{% url 'posts:quill-post-create' %}" class="btn btn-primary mr-1">ModelForm</a>
-                    <a href="{% url 'posts:quill-post-create-normal-html' %}" class="btn btn-primary mr-1">Form (Initial HTML)</a>
-                    <a href="{% url 'posts:quill-post-create-normal-text' %}" class="btn btn-primary mr-1">Form (Initial Text)</a>
+                    <a href="{% url 'posts:quill-post-create-normal' %}" class="btn btn-primary me-1">Form</a>
+                    <a href="{% url 'posts:quill-post-create' %}" class="btn btn-primary me-1">ModelForm</a>
+                    <a href="{% url 'posts:quill-post-create-normal-html' %}" class="btn btn-primary me-1">Form (Initial HTML)</a>
+                    <a href="{% url 'posts:quill-post-create-normal-text' %}" class="btn btn-primary">Form (Initial Text)</a>
                 </div>
             </div>
         </div>
