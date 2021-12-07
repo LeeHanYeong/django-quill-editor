@@ -2,6 +2,9 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
     hooks:
+      - id: check-yaml
+        exclude: .*docker-compose.*?y(am|m)l
+
       - id: end-of-file-fixer
         files: .*\.py
 
@@ -10,6 +13,14 @@ repos:
 
   - repo: local
     hooks:
+      - id: make-dockerfile
+        name: Make Dockerfile.deploy
+        language: system
+        entry: bash -c '
+          .scripts/make_dockerfile.py &&
+          git add Dockerfile.deploy'
+        files: Dockerfile|.scripts/make_dockerfile.py
+
       - id: black
         name: black
         description: "Black: The uncompromising Python code formatter"

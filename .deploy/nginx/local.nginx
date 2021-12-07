@@ -1,0 +1,31 @@
+server {
+  listen        80;
+  server_name   quill.localhost localhost;
+
+  charset                         utf-8;
+  client_max_body_size            128M;
+  proxy_headers_hash_max_size     512;
+  proxy_headers_hash_bucket_size  256;
+
+  access_log  /var/log/nginx/access.log;
+  error_log   /var/log/nginx/error.log;
+
+  location / {
+    proxy_set_header    REMOTE_ADDR         $remote_addr;
+    proxy_set_header    Host                $http_host;
+    proxy_set_header    X-Real-IP           $remote_addr;
+    proxy_set_header    X-Forwarded-Proto   https;
+    proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
+
+    proxy_pass_header   Server;
+    proxy_pass          http://django:8000;
+    proxy_redirect      off;
+  }
+
+  location /static/ {
+    alias   /srv/playground/.static/;
+  }
+  location /favicon.ico {
+    alias   /srv/playground/.static/favicon.ico;
+  }
+}

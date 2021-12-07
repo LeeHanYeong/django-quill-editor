@@ -10,7 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "er8-=^6ym+!t&r#4-=3cq3!25%3hw=9n+5bp1i2549ltqfg=xp"
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "quill.lhy.kr",
+]
 
 # Static
 STATIC_DIR = BASE_DIR / "static"
@@ -21,7 +25,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / ".media"
 
 # Custom
-DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024  # 2MB
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 AUTHENTICATION_BACKENDS = [
     "config.backends.StaticBackend",

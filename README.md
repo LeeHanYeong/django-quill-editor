@@ -76,6 +76,14 @@ class QuillPostAdmin(admin.ModelAdmin):
 
 
 
+## docker-compose up (in local)
+
+```shell
+docker-compose -f docker-compose-local.yml up --build --force-recreate --remove-orphans
+```
+
+
+
 ## Contributing
 
 As an open source project, we welcome contributions.
