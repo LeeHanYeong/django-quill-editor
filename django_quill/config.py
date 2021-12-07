@@ -29,3 +29,14 @@ DEFAULT_CONFIG = {
         },
     },
 }
+MEDIA_JS = [
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js",
+    "https://cdn.quilljs.com/1.3.7/quill.min.js",
+    "https://unpkg.com/quill-image-compress@1.2.16/dist/quill.imageCompressor.min.js",
+    "django_quill/django_quill.js",
+]
+MEDIA_CSS = [
+    "https://cdn.quilljs.com/1.3.7/quill.snow.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/darcula.min.css",
+    "django_quill/django_quill.css",
+]

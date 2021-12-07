@@ -10,7 +10,7 @@ from django.utils.encoding import force_text
 from django.utils.functional import Promise
 from django.utils.safestring import mark_safe
 
-from .config import DEFAULT_CONFIG
+from .config import DEFAULT_CONFIG, MEDIA_JS, MEDIA_CSS
 
 __all__ = (
     "LazyEncoder",
@@ -30,18 +30,8 @@ json_encode = LazyEncoder().encode
 
 class QuillWidget(forms.Textarea):
     class Media:
-        js = (
-            "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js",
-            "django_quill/django_quill.js",
-            "https://cdn.quilljs.com/1.3.7/quill.min.js",
-        )
-        css = {
-            "all": (
-                "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/darcula.min.css",
-                "django_quill/django_quill.css",
-                "https://cdn.quilljs.com/1.3.7/quill.snow.css",
-            )
-        }
+        js = MEDIA_JS
+        css = {"all": MEDIA_CSS}
 
     def __init__(self, config_name="default", *args, **kwargs):
         super().__init__(*args, **kwargs)

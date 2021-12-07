@@ -2,7 +2,7 @@
 import subprocess
 import os
 
-ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
+ROOT_DIR = os.path.dirname(__file__)
 VERSION_FILE = os.path.join(ROOT_DIR, "version.txt")
 
 if __name__ == "__main__":
