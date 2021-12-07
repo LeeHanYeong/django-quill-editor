@@ -30,8 +30,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.deploy
-      args:
-        requirements: requirements.txt
     volumes:
       - static:/srv/playground/.static
     command: bash -c '

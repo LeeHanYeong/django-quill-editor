@@ -15,8 +15,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        requirements: requirements.txt
     volumes:
       - static:/srv/playground/.static
     command: bash -c '
