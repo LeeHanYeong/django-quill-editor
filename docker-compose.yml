@@ -5,6 +5,7 @@ services:
     image: nginx:alpine
     restart: unless-stopped
     volumes:
+      - ./.deploy/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./.deploy/nginx/production.nginx:/etc/nginx/conf.d/default.conf
       - ./.deploy/certbot/conf:/etc/letsencrypt
       - ./.deploy/certbot/www:/var/www/certbot
