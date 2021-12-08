@@ -25,6 +25,9 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / ".media"
 
 # Custom
+LOGIN_URL = "admin:login"
+LOGIN_REDIRECT_URL = "admin:index"
+LOGOUT_REDIRECT_URL = "index"
 DATA_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024  # 2MB
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 AUTHENTICATION_BACKENDS = [

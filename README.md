@@ -10,6 +10,16 @@
 
 ![django-quill-editor](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/django-quill-editor-sample.png)
 
+## Live Demo
+
+#### https://quill.lhy.kr/
+
+- Form | https://quill.lhy.kr/posts/create/normal/
+- ModelForm | https://quill.lhy.kr/posts/create/
+- Form (Initial HTML) | https://quill.lhy.kr/posts/create/normal/html/
+- Form (Initial Text) | https://quill.lhy.kr/posts/create/normal/text/
+- Admin | https://quill.lhy.kr/admin/login/
+
 
 
 ## Documentation
@@ -76,11 +86,39 @@ class QuillPostAdmin(admin.ModelAdmin):
 
 
 
-## docker-compose up (in local)
+
+
+## Running the Live Demo project in local
+
+The live demo is a deployment of the **"playground"** package, which is a django application within this library.  
+After cloning or downloading the repository, you can try running the live demo locally.
+
+**A Python virtual environment is required to run the project.**
 
 ```shell
-docker-compose -f docker-compose-local.yml up --build --force-recreate --remove-orphans
+# [Optional] We recommend that you start after creating a folder for your project.
+mkdir ~/projects
+cd projects
+
+# Clone repository
+git clone git@github.com:LeeHanYeong/django-quill-editor.git
+
+# Go to the project directory and apply the virtual environment
+cd django-quill-editor
+# [apply venv]
+
+# Go to the playground package
+cd playground
+
+# Install requirements
+pip install -r requirements.txt
+
+# Run migrate and runserver
+python manage.py migrate
+python manage.py runserver
 ```
+
+After the above operation, the live demo site works at localhost:8000.
 
 
 
@@ -130,3 +168,10 @@ python -m http.server 3001
 ```
 
  
+
+### docker-compose up (in local)
+
+```shell
+docker-compose -f docker-compose-local.yml up --build --force-recreate --remove-orphans
+```
+
