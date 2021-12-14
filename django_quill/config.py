@@ -20,10 +20,10 @@ DEFAULT_CONFIG = {
         ],
         # quill-image-compress
         "imageCompressor": {
-            "quality": 0.7,
+            "quality": 0.8,
             "maxWidth": 2000,
             "maxHeight": 2000,
-            "imageType": "image/webp",
+            "imageType": "image/jpeg",
             "debug": False,
             "suppressErrorLogging": True,
         },
@@ -34,7 +34,7 @@ DEFAULT_CONFIG = {
 MEDIA_JS = [
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js",
     "https://cdn.quilljs.com/1.3.7/quill.min.js",
-    "https://unpkg.com/quill-image-compress@1.2.16/dist/quill.imageCompressor.min.js",
+    "https://unpkg.com/lhy-quill-image-compress@1.2.4/dist/quill.imageCompressor.min.js",
     "https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js",
     "django_quill/django_quill.js",
 ]
