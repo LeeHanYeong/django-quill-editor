@@ -24,6 +24,45 @@ STATICFILES_DIRS = [STATIC_DIR]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / ".media"
 
+# Quill
+QUILL_CONFIGS = {
+    "default": {
+        "theme": "snow",
+        "modules": {
+            "syntax": True,
+            "toolbar": [
+                [
+                    {"font": []},
+                    {"header": []},
+                    {"align": []},
+                    "bold",
+                    "italic",
+                    "underline",
+                    "strike",
+                    "blockquote",
+                    {"color": []},
+                    {"background": []},
+                ],
+                ["code-block", "link", "image"],
+                ["clean"],
+            ],
+            # quill-image-compress
+            "imageCompressor": {
+                "quality": 0.8,
+                "maxWidth": 2000,
+                "maxHeight": 2000,
+                "imageType": "image/jpeg",
+                "keepImageTypes": [],
+                "ignoreImageTypes": ["image/webp"],
+                "debug": False,
+                "suppressErrorLogging": True,
+            },
+            # quill-image-resize
+            "imageResize": {},
+        },
+    },
+}
+
 # Custom
 LOGIN_URL = "admin:login"
 LOGIN_REDIRECT_URL = "admin:index"
