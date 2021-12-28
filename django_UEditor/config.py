@@ -1,0 +1,5 @@
+DEFAULT_CONFIG = {}
+MEDIA_JS = [
+]
+MEDIA_CSS = [
+]

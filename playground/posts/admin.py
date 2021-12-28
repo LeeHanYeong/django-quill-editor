@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import QuillPost
+from .models import UEPost
 
-__all__ = ("QuillPostAdmin",)
+__all__ = ("UEPostAdmin",)
 
 
-@admin.register(QuillPost)
-class QuillPostAdmin(admin.ModelAdmin):
+@admin.register(UEPost)
+class UEPostAdmin(admin.ModelAdmin):
     pass

@@ -1,28 +1,28 @@
 # Using as ModelForm
 
-Add `QuillField` to the **Model class** you want to use
+Add `UEField` to the **Model class** you want to use
 
 ```python
 # models.py
 from django.db import models
-from django_quill.fields import QuillField
+from django_ueditor.fields import UEField
 
-class QuillPost(models.Model):
-    content = QuillField()
+class UEPost(models.Model):
+    content = UEField()
 ```
 
 
 
-Just define and use **ModelForm** of Model class (with QuillField)
+Just define and use **ModelForm** of Model class (with UEField)
 
 ```python
 # forms.py
 from django import forms
-from .models import QuillPost
+from .models import UEPost
 
-class QuillPostForm(forms.ModelForm):
+class UEPostForm(forms.ModelForm):
     class Meta:
-        model = QuillPost
+        model = UEPost
         fields = (
             'content',
         )
@@ -35,10 +35,10 @@ Set the **view** and **template** in the same way as when using a **normal Form*
 ```python
 # views.py
 from django.shortcuts import render
-from .forms import QuillPostForm
+from .forms import UEPostForm
 
 def model_form_view(request):
-    return render(request, 'form_view.html', {'form': QuillPostForm()})
+    return render(request, 'form_view.html', {'form': UEPostForm()})
 ```
 
 ```html

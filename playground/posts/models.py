@@ -1,16 +1,16 @@
 from django.db import models
 from django.urls import reverse
 
-from django_quill.fields import QuillField
+from django_ueditor.fields import UEField
 
-__all__ = ("QuillPost",)
+__all__ = ("UEPost",)
 
 
-class QuillPost(models.Model):
-    content = QuillField()
+class UEPost(models.Model):
+    content = UEField()
 
     class Meta:
         ordering = ["-pk"]
 
     def get_absolute_url(self):
-        return reverse("posts:quill-post-detail", args=[self.pk])
+        return reverse("posts:ueditor-post-detail", args=[self.pk])

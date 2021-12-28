@@ -1,14 +1,14 @@
 # Using in Django admin
 
-Add `QuillField` to the **Model class** you want to use
+Add `UEField` to the **Model class** you want to use
 
 ```python
 # models.py
 from django.db import models
-from django_quill.fields import QuillField
+from django_ueditor.fields import UEField
 
-class QuillPost(models.Model):
-    content = QuillField()
+class UEPost(models.Model):
+    content = UEField()
 ```
 
 
@@ -17,12 +17,12 @@ Just register the Model in **admin.py** of the app
 
 ```python
 from django.contrib import admin
-from .models import QuillPost
+from .models import UEPost
 
-@admin.register(QuillPost)
-class QuillPostAdmin(admin.ModelAdmin):
+@admin.register(UEPost)
+class UEPostAdmin(admin.ModelAdmin):
     pass
 ```
 
-![admin-sample](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/admin-sample.png)
+![admin-sample](https://raw.githubusercontent.com/LeeHanYeong/django-ueditor-editor/master/_assets/admin-sample.png)
 

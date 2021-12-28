@@ -1,30 +1,30 @@
-# django-quill-editor
+# django-ueditor-editor
 
-![PyPI](https://img.shields.io/pypi/v/django-quill-editor)
+![PyPI](https://img.shields.io/pypi/v/django-ueditor-editor)
 
-**django-quill-editor** makes [Quill.js](https://quilljs.com/) easy to use on Django Forms and admin sites
+**django-ueditor-editor** makes [UE.js](https://ueditorjs.com/) easy to use on Django Forms and admin sites
 
 - **No configuration required for static files!**
 - The entire code for inserting WYSIWYG editor is less than 30 lines
 - It can be used in both admin and Django views
 
-![django-quill-editor](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/django-quill-editor-sample.png)
+![django-ueditor-editor](https://raw.githubusercontent.com/LeeHanYeong/django-ueditor-editor/master/_assets/django-ueditor-editor-sample.png)
 
 ## Live Demo
 
-#### https://quill.lhy.kr/
+#### https://ueditor.lhy.kr/
 
-- Form | https://quill.lhy.kr/posts/create/normal/
-- ModelForm | https://quill.lhy.kr/posts/create/
-- Form (Initial HTML) | https://quill.lhy.kr/posts/create/normal/html/
-- Form (Initial Text) | https://quill.lhy.kr/posts/create/normal/text/
-- Admin | https://quill.lhy.kr/admin/login/
+- Form | https://ueditor.lhy.kr/posts/create/normal/
+- ModelForm | https://ueditor.lhy.kr/posts/create/
+- Form (Initial HTML) | https://ueditor.lhy.kr/posts/create/normal/html/
+- Form (Initial Text) | https://ueditor.lhy.kr/posts/create/normal/text/
+- Admin | https://ueditor.lhy.kr/admin/login/
 
 
 
 ## Documentation
 
-The full document is in [https://django-quill-editor.readthedocs.io/](https://django-quill-editor.readthedocs.io/), including everything about how to use the Form or ModelForm, and where you can add custom settings.
+The full document is in [https://django-ueditor-editor.readthedocs.io/](https://django-ueditor-editor.readthedocs.io/), including everything about how to use the Form or ModelForm, and where you can add custom settings.
 
 Please refer to the **QuickStart** section below for simple usage.
 
@@ -34,28 +34,28 @@ Please refer to the **QuickStart** section below for simple usage.
 
 ### Setup
 
-- Install `django-quill-editor` to your Python environment
+- Install `django-ueditor-editor` to your Python environment
 
   > Requires Python 3.7 or higher and Django 3.1 or higher.
 
   ```shell
-  pip install django-quill-editor
+  pip install django-ueditor-editor
   ```
 
-- Add `django_quill` to `INSTALLED_APPS` in `settings.py`
+- Add `django_ueditor` to `INSTALLED_APPS` in `settings.py`
 
   ```python
   # settings.py
   INSTALLED_APPS = [
       'django.contrib.admin',
       ...
-      'django_quill',
+      'django_ueditor',
   ]
   ```
 
 ### Making Model
 
-Add `QuillField` to the **Model class** you want to use.
+Add `UEField` to the **Model class** you want to use.
 
 > 1. App containing models.py must be added to INSTALLED_APPS
 > 2. After adding the app, you need to run makemigrations and migrate to create the DB table.
@@ -63,10 +63,10 @@ Add `QuillField` to the **Model class** you want to use.
 ```python
 # models.py
 from django.db import models
-from django_quill.fields import QuillField
+from django_ueditor.fields import UEField
 
-class QuillPost(models.Model):
-    content = QuillField()
+class UEPost(models.Model):
+    content = UEField()
 ```
 
 ### Using in admin
@@ -75,14 +75,14 @@ Just register the Model in **admin.py** of the app.
 
 ```python
 from django.contrib import admin
-from .models import QuillPost
+from .models import UEPost
 
-@admin.register(QuillPost)
-class QuillPostAdmin(admin.ModelAdmin):
+@admin.register(UEPost)
+class UEPostAdmin(admin.ModelAdmin):
     pass
 ```
 
-![admin-sample](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/admin-sample.png)
+![admin-sample](https://raw.githubusercontent.com/LeeHanYeong/django-ueditor-editor/master/_assets/admin-sample.png)
 
 
 
@@ -101,10 +101,10 @@ mkdir ~/projects
 cd projects
 
 # Clone repository
-git clone git@github.com:LeeHanYeong/django-quill-editor.git
+git clone git@github.com:LeeHanYeong/django-ueditor-editor.git
 
 # Go to the project directory and apply the virtual environment
-cd django-quill-editor
+cd django-ueditor-editor
 # [apply venv]
 
 # Go to the playground package
@@ -125,7 +125,7 @@ After the above operation, the live demo site works at localhost:8000.
 ## Contributing
 
 As an open source project, we welcome contributions.
-The code lives on [GitHub](https://github.com/LeeHanYeong/django-quill-editor)
+The code lives on [GitHub](https://github.com/LeeHanYeong/django-ueditor-editor)
 
 
 

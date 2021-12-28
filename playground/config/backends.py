@@ -8,7 +8,7 @@ __all__ = ("StaticBackend",)
 class StaticBackend:
     def authenticate(self, request):
         user = User.objects.get_or_create(
-            username="django-quill-editor",
+            username="django-ueditor-editor",
             is_staff=True,
             is_superuser=True,
         )[0]

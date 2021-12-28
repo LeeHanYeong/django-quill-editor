@@ -4,27 +4,27 @@ from . import views
 
 app_name = "posts"
 urlpatterns = [
-    path("", views.QuillPostListView.as_view(), name="quill-post-list"),
-    path("create/", views.QuillPostCreateView.as_view(), name="quill-post-create"),
+    path("", views.UEPostListView.as_view(), name="ueditor-post-list"),
+    path("create/", views.UEPostCreateView.as_view(), name="ueditor-post-create"),
     path(
         "create/normal/",
-        views.QuillFieldFormView.as_view(),
-        name="quill-post-create-normal",
+        views.UEFieldFormView.as_view(),
+        name="ueditor-post-create-normal",
     ),
     path(
         "create/normal/html/",
-        views.QuillFieldFormHtmlInitialView.as_view(),
-        name="quill-post-create-normal-html",
+        views.UEFieldFormHtmlInitialView.as_view(),
+        name="ueditor-post-create-normal-html",
     ),
     path(
         "create/normal/text/",
-        views.QuillFieldFormTextInitialView.as_view(),
-        name="quill-post-create-normal-text",
+        views.UEFieldFormTextInitialView.as_view(),
+        name="ueditor-post-create-normal-text",
     ),
-    path("<int:pk>/", views.QuillPostDetailView.as_view(), name="quill-post-detail"),
+    path("<int:pk>/", views.UEPostDetailView.as_view(), name="ueditor-post-detail"),
     path(
         "<int:pk>/update/",
-        views.QuillPostUpdateView.as_view(),
-        name="quill-post-update",
+        views.UEPostUpdateView.as_view(),
+        name="ueditor-post-update",
     ),
 ]

@@ -1,0 +1,29 @@
+{% load static %}
+<div class="vLargeTextField django-ueditor-widget-container">
+    <div id="ueditor-{{ id }}" class="django-ueditor-widget" data-config="{{ config }}" data-type="django-ueditor"></div>
+    <input id="ueditor-input-{{ id }}" name="{{ name }}" type="hidden">
+    <script>
+        (function() {
+            {% if config %}
+            var ueditor = UE.getEditor('ueditor-{{ id }}', JSON.parse('{{ config|safe|escapejs }}'));
+            {% else %}
+            var ueditor = UE.getEditor('ueditor-{{ id }}');
+            {% endif %} 
+            {% if ueditor and ueditor.delta %}
+            // try django_ueditor/ueditor.py/UE instance
+            var contents = JSON.parse('{{ ueditor.delta|safe|escapejs }}');
+            ueditor.setContent(contents); 
+            {% elif value %}
+            // try Parsing value as JSON
+            try {
+                var value = JSON.parse('{{ value|safe|escapejs }}');
+                ueditor.setContent(JSON.parse(value['delta']));
+            }
+            // When a parsing error occurs, the contents are regarded as HTML and the contents of the editor are filled.
+            catch (e) {
+                ueditor.clipboard.dangerouslyPasteHTML(0, `{{ value|safe }}`)
+            } 
+            {% endif %}
+        })();
+    </script>
+</div>

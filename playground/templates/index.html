@@ -1,36 +1,31 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% block content %}
+<div class="container">
+    <h2>django-ueditor-editor</h2>
+    <p>
+        <img alt="PyPI" src="https://img.shields.io/pypi/v/django-ueditor-editor">
+    </p>
+    <p>
+        <a href="https://github.com/LeeHanYeong/django-ueditor-editor" target="_blank">django-ueditor-editor</a> makes <a href="https://ueditorjs.com/" target="_blank">UE.js</a> easy to use on Django Forms and admin sites
+    </p>
+    <ul>
+        <li><b>No configuration required for static files!</b></li>
+        <li>The entire code for inserting WYSIWYG editor is less than 30 lines</li>
+        <li>It can be used in both admin and Django views</li>
+    </ul>
+    <img src="{{ title_img }}" style="max-width: 400px;" alt="">
+    <hr>
 
-    <div class="container">
-        <h2>django-quill-editor</h2>
-        <p>
-            <img alt="PyPI" src="https://img.shields.io/pypi/v/django-quill-editor">
-        </p>
-        <p>
-            <a href="https://github.com/LeeHanYeong/django-quill-editor" target="_blank">django-quill-editor</a> makes <a href="https://quilljs.com/" target="_blank">Quill.js</a> easy to use on Django Forms and admin sites
-        </p>
-        <ul>
-            <li><b>No configuration required for static files!</b></li>
-            <li>The entire code for inserting WYSIWYG editor is less than 30 lines</li>
-            <li>It can be used in both admin and Django views</li>
-        </ul>
-        <img src="{{ title_img }}" style="max-width: 400px;" alt="">
-        <hr>
+    <h3>Form and ModelForm</h3>
+    <p style="white-space: pre-line">You can display the editor using ueditor.js in the template using Form or ModelForm. When displaying HTML content, not the editor, use the <b>.html</b> property</p>
+    <p>
+        <a href="{% url 'posts:ueditor-post-list' %}">Go to Example ▶</a>
+    </p>
 
-        <h3>Form and ModelForm</h3>
-        <p style="white-space: pre-line">You can display the editor using quill.js in the template using Form or ModelForm.
-            When displaying HTML content, not the editor, use the <b>.html</b> property</p>
-        <p>
-            <a href="{% url 'posts:quill-post-list' %}">Go to Example ▶</a>
-        </p>
-
-        <h3>Django admin</h3>
-        <p style="white-space: pre-line">You can easily integrate with django admin.
-            In this playground, you can use admin without credentials.
+    <h3>Django admin</h3>
+    <p style="white-space: pre-line">You can easily integrate with django admin. In this playground, you can use admin without credentials.
         <p>
             <a href="{% url 'admin:index' %}">Go to Django admin ▶</a>
         </p>
-    </div>
+</div>
 {% endblock %}

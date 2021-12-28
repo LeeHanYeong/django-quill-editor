@@ -1,22 +1,22 @@
 from django import forms
 
-from django_quill.forms import QuillFormField
-from .models import QuillPost
+from django_ueditor.forms import UEFormField
+from .models import UEPost
 
 __all__ = (
-    "QuillFieldForm",
-    "QuillPostForm",
+    "UEFieldForm",
+    "UEPostForm",
 )
 
 
-class QuillFieldForm(forms.Form):
-    content = QuillFormField()
+class UEFieldForm(forms.Form):
+    content = UEFormField()
 
     def save(self):
-        return QuillPost.objects.create(content=self.cleaned_data["content"])
+        return UEPost.objects.create(content=self.cleaned_data["content"])
 
 
-class QuillPostForm(forms.ModelForm):
+class UEPostForm(forms.ModelForm):
     class Meta:
-        model = QuillPost
+        model = UEPost
         fields = ("content",)

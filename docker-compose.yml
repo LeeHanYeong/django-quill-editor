@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  quill:
+  ueditor:
     image: nginx:alpine
     restart: unless-stopped
     volumes:

@@ -3,6 +3,6 @@
         <div>
             {{ post.content.html|safe }}
         </div>
-        <a href="{% url 'posts:quill-post-update' pk=post.pk %}" class="btn btn-primary btn-sm">EDIT</a>
+        <a href="{% url 'posts:ueditor-post-update' pk=post.pk %}" class="btn btn-primary btn-sm">EDIT</a>
     </div>
 </div>

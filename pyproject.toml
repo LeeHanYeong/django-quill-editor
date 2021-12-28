@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "django-quill-editor"
+name = "django-ueditor-editor"
 version = "0.1.0"
 description = ""
 authors = ["lhy <dev@lhy.kr>"]
 packages = [
-    { include = "django_quill" },
+    { include = "django_ueditor" },
 ]
 
 [tool.poetry.dependencies]

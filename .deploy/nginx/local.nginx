@@ -1,6 +1,6 @@
 server {
   listen        80;
-  server_name   quill.localhost localhost;
+  server_name   ueditor.localhost localhost;
 
   charset                         utf-8;
   client_max_body_size            128M;

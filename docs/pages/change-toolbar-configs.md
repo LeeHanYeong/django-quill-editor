@@ -1,12 +1,12 @@
 # Change toolbar config
 
 > More settings can be found on the official site  
-> https://quilljs.com/docs/modules/toolbar/
+> https://ueditorjs.com/docs/modules/toolbar/
 
-Add `QUILL_CONFIGS` to the **settings.py**
+Add `UEDITOR_CONFIGS` to the **settings.py**
 
 ```python
-QUILL_CONFIGS = {
+UEDITOR_CONFIGS = {
     'default':{
         'theme': 'snow',
         'modules': {

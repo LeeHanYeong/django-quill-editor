@@ -8,13 +8,13 @@ README = open(os.path.join(ROOT_DIR, "README.md")).read()
 VERSION = open(os.path.join(ROOT_DIR, "version.txt")).read()
 
 setup(
-    name="django-quill-editor",
+    name="django-ueditor-editor",
     version=VERSION,
-    url="https://github.com/LeeHanYeong/django-quill-editor",
+    url="https://github.com/LeeHanYeong/django-ueditor-editor",
     author="lhy",
     author_email="dev@lhy.kr",
     license="MIT",
-    description="Integrate Quill editor with Django project.",
+    description="Integrate UE editor with Django project.",
     long_description=README,
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["test*", "sample"]),

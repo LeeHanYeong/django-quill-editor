@@ -1,6 +1,6 @@
 [run]
 source =
-    django_quill
+    django_ueditor
     playground
 omit =
     */test*
