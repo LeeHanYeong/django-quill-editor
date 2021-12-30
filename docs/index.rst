@@ -12,13 +12,14 @@ django-quill-editor makes `Quill.js` easy to use on Django Forms and admin sites
 
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 5
    :glob:
 
    pages/using-in-admin
    pages/using-as-form
    pages/using-as-modelform
    pages/change-toolbar-configs
+   pages/migrating-to-quillfield
 
 Installation
 ************

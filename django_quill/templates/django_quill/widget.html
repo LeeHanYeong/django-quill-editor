@@ -9,6 +9,8 @@
                 // try django_quill/quill.py/Quill instance
                 var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
                 wrapper.quill.setContents(contents);
+            {% elif quill and quill.html %}
+                wrapper.quill.clipboard.dangerouslyPasteHTML(0, `{{ quill.html|safe }}`)
             {% elif value %}
                 // try Parsing value as JSON
                 try {

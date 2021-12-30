@@ -2,6 +2,8 @@
 /.static
 /playground/.static
 /playground/.media
+*.ipynb
+.ipynb_checkpoints/
 
 # Created by https://www.gitignore.io/api/git,node,linux,macos,django,python,windows,pycharm+all,webstorm+all,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=git,node,linux,macos,django,python,windows,pycharm+all,webstorm+all,visualstudiocode
