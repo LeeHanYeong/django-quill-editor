@@ -89,6 +89,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "django_quill",
+    "rest_framework",
 ]
 
 ROOT_URLCONF = "config.urls"

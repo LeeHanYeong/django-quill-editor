@@ -5,6 +5,7 @@ from django.apps import apps
 from django.core.management import BaseCommand
 
 from django_quill.fields import FieldQuill
+from django_quill.quill import QuillParseError
 
 
 class Command(BaseCommand):
@@ -26,8 +27,12 @@ class Command(BaseCommand):
             )
             field_data = getattr(instance, field_name)
             if isinstance(field_data, FieldQuill):
-                print(f" This is already a QuillField.")
-                continue
+                try:
+                    quill = field_data.quill
+                    print(f" This is already a QuillField.")
+                    continue
+                except QuillParseError:
+                    field_data = field_data.json_string
             try:
                 json_data = json.loads(field_data)
                 if "delta" in json_data:

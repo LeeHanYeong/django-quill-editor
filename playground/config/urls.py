@@ -13,8 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import importlib.util
+
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import SimpleRouter
 
 from . import views
 
@@ -26,3 +29,14 @@ urlpatterns = [
     path("reset/", views.ResetView.as_view(), name="reset"),
     path("posts/", include("posts.urls")),
 ]
+urlpatterns_apis = []
+
+if (spec := importlib.util.find_spec("rest_framework")) is not None:
+    from posts import apis
+
+    router = SimpleRouter()
+    router.register(r"", apis.QuillPostViewSet)
+    urlpatterns_apis.append(path("posts/", include(router.urls)))
+
+if urlpatterns_apis:
+    urlpatterns.append(path("api/", include(urlpatterns_apis)))

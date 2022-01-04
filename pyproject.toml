@@ -10,6 +10,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.9"
 Django = "^3.2.9"
+djangorestframework = "^3.13.1"
 gunicorn = "^20.1.0"
 model-bakery = "^1.3.3"
 

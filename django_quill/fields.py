@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import strip_tags
 
 from .forms import QuillFormField
 from .quill import Quill
@@ -54,6 +55,11 @@ class FieldQuill:
     def delta(self):
         self._require_quill()
         return self.quill.delta
+
+    @property
+    def plain(self):
+        self._require_quill()
+        return self.quill.plain
 
     def save(self, json_string, save=True):
         setattr(self.instance, self.field.name, json_string)

@@ -5,6 +5,8 @@ __all__ = (
     "Quill",
 )
 
+from django.utils.html import strip_tags
+
 
 class QuillParseError(Exception):
     def __init__(self, value):
@@ -21,5 +23,6 @@ class Quill:
             json_data = json.loads(json_string)
             self.delta = json_data["delta"]
             self.html = json_data.get("html", "")
+            self.plain = strip_tags(self.html).strip()
         except (json.JSONDecodeError, KeyError, TypeError):
             raise QuillParseError(json_string)
