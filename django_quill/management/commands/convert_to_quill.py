@@ -50,5 +50,5 @@ class Command(BaseCommand):
                     "html": field_data,
                 }
                 setattr(instance, field_name, json.dumps(converted_data))
-                instance.save()
+                instance.save(update_fields=[field_name])
                 print(f" Saved")
