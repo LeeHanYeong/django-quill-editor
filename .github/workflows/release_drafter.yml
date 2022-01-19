@@ -1,0 +1,45 @@
+name: Release Drafter
+
+on:
+  push:
+    # branches to consider in the event; optional, defaults to all
+    branches:
+      - main
+
+jobs:
+  update_release_draft:
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2.3.1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install poetry
+        run: make poetry-download
+
+      - uses: release-drafter/release-drafter@v5.17.5
+        id: release-drafter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current poetry version
+        id: get-current-poetry-version
+        run: |
+           echo ::set-output name=POETRY_VERSION::$(bash -o pipefail -c "poetry version | awk '{ print \$2 }'")
+
+      - name: Update poetry version
+        run: |
+          poetry version ${{ steps.release-drafter.outputs.tag_name }}
+
+      - uses: EndBug/add-and-commit@v7
+        if: steps.release-drafter.outputs.tag_name != steps.get-current-poetry-version.outputs.POETRY_VERSION
+        with:
+          author_name: ReleaseDrafter
+          author_email: https://lhy.kr
+          message: "Bump Version to ${{ steps.release-drafter.outputs.tag_name }}"

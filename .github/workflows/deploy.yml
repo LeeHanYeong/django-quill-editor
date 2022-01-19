@@ -1,0 +1,19 @@
+name: deploy
+
+on:
+  release:
+    types: ["published"]
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v1.9
+        with:
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
