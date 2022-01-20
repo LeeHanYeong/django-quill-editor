@@ -16,8 +16,8 @@ class NonQuillPost(models.Model):
    This command permanently transforms the contents of that field in the DB.
 
    ```shell
-   # Usage: python manage.py {app_name} {model_name} {field_name}
-   > python manage.py posts NonQuillPost content
+   # Usage: python manage.py convert_to_quill {app_name} {model_name} {field_name}
+   > python manage.py convert_to_quill posts NonQuillPost content
    ```
 
 2. Change existing field to QuillField.  
