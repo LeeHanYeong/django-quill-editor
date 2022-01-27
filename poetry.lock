@@ -332,7 +332,7 @@ bcrypt = ["bcrypt"]
 name = "django-extensions"
 version = "3.1.5"
 description = "Extensions for Django"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -1509,7 +1509,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "3eda14edd1b3e3b63754efcc48c68e99c1db6ac01960105eabacffa4b2792649"
+content-hash = "90e26b6930f98836e3edeb175e1e24b7310908934dc68ce1acbf11b1a209bd2e"
 
 [metadata.files]
 alabaster = [
