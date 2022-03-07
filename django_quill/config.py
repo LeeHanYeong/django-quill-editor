@@ -32,7 +32,7 @@ DEFAULT_CONFIG = {
             "showSize": True,
             "locale": {},
         },
-        # htmlEditButton
+        # quill-html-edit-button
         "htmlEditButton": {
             "syntax": True,
         }
@@ -48,7 +48,7 @@ MEDIA_JS = [
     "https://cdn.jsdelivr.net/npm/quill-image-compress@1.2.21/dist/quill.imageCompressor.min.js",
     # quill-resize
     "https://cdn.jsdelivr.net/npm/@botom/quill-resize-module@2.0.0/dist/quill-resize-module.min.js",
-    # htmlEditButton
+    # quill-html-edit-button
     "https://unpkg.com/quill-html-edit-button@2.2.7/dist/quill.htmlEditButton.min.js",
     # custom
     "django_quill/django_quill.js",
