@@ -1,6 +1,7 @@
 DEFAULT_CONFIG = {
     "theme": "snow",
     "modules": {
+        "table": True,
         "syntax": True,
         "toolbar": [
             [
@@ -32,24 +33,32 @@ DEFAULT_CONFIG = {
             "showSize": True,
             "locale": {},
         },
+        # quill-html-edit-button
+        "htmlEditButton": {
+            "syntax": True,
+        }
     },
 }
 MEDIA_JS = [
     # syntax-highlight
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/xml.min.js",
     # quill
-    "https://cdn.quilljs.com/1.3.7/quill.min.js",
+    "https://cdn.quilljs.com/2.0.0-dev.2/quill.js",
     # quill-image-compress
     "https://cdn.jsdelivr.net/npm/quill-image-compress@1.2.21/dist/quill.imageCompressor.min.js",
     # quill-resize
     "https://cdn.jsdelivr.net/npm/@botom/quill-resize-module@2.0.0/dist/quill-resize-module.min.js",
+    # quill-html-edit-button
+    "https://unpkg.com/quill-html-edit-button@2.2.7/dist/quill.htmlEditButton.min.js",
     # custom
     "django_quill/django_quill.js",
 ]
 MEDIA_CSS = [
     # syntax-highlight
-    "https://cdn.quilljs.com/1.3.7/quill.snow.css",
+    "https://cdn.quilljs.com/2.0.0-dev.2/quill.snow.css",
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/darcula.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css",
     # quill-resize
     "https://cdn.jsdelivr.net/npm/quill-resize-module@1.2.4/dist/resize.min.css",
     # custom
