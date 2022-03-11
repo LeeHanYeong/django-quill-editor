@@ -64,8 +64,6 @@ MEDIA_JS = [
     "https://cdn.jsdelivr.net/npm/@botom/quill-resize-module@2.0.0/dist/quill-resize-module.min.js",
     # quill-html-edit-button
     "https://unpkg.com/quill-html-edit-button@2.2.7/dist/quill.htmlEditButton.min.js",
-    # quill-better-table
-    "https://unpkg.com/quill-better-table@1.2.10/dist/quill-better-table.min.js",
     # custom
     "django_quill/django_quill.js",
 ]
@@ -74,7 +72,6 @@ MEDIA_CSS = [
     "https://cdn.quilljs.com/1.3.7/quill.snow.css",
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/darcula.min.css",
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css",
-    "https://unpkg.com/quill-better-table@1.2.8/dist/quill-better-table.css",
     # quill-resize
     "https://cdn.jsdelivr.net/npm/quill-resize-module@1.2.4/dist/resize.min.css",
     # custom

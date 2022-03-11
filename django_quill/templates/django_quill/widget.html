@@ -3,16 +3,45 @@
     <div id="quill-{{ id }}" class="django-quill-widget" data-config="{{ config }}" data-type="django-quill"></div>
     <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden">
     <div class="btn-group">
-        <button type="button" id="insert-table">Insert table</button>
+        <button id="insert-table">Insert Table</button>
+        <button id="insert-row-above">Insert Row Above</button>
+        <button id="insert-row-below">Insert Row Below</button>
+        <button id="insert-column-left">Insert Column Left</button>
+        <button id="insert-column-right">Insert Column Right</button>
+        <button id="delete-row">Delete Row</button>
+        <button id="delete-column">Delete Column</button>
+        <button id="delete-table">Delete Table</button>
     </div>
     <script>
         (function () {
             var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe|escapejs }}'));
-            let tableModule = wrapper.quill.getModule("better-table");
-            document.body.querySelector("#insert-table").onclick = () => {
-                tableModule.insertTable(3, 3);
-            };
-            
+            let tableModule = wrapper.quill.getModule("table");
+
+            document.querySelector('#insert-table').addEventListener('click', function() {
+                table.insertTable(2, 2);
+            });
+            document.querySelector('#insert-row-above').addEventListener('click', function() {
+                table.insertRowAbove();
+            });
+            document.querySelector('#insert-row-below').addEventListener('click', function() {
+                table.insertRowBelow();
+            });
+            document.querySelector('#insert-column-left').addEventListener('click', function() {
+                table.insertColumnLeft();
+            });
+            document.querySelector('#insert-column-right').addEventListener('click', function() {
+                table.insertColumnRight();
+            });
+            document.querySelector('#delete-row').addEventListener('click', function() {
+                table.deleteRow();
+            });
+            document.querySelector('#delete-column').addEventListener('click', function() {
+                table.deleteColumn();
+            });
+            document.querySelector('#delete-table').addEventListener('click', function() {
+                table.deleteTable();
+            });
+
             {% if quill and quill.delta %}
                 // try django_quill/quill.py/Quill instance
                 var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');
