@@ -8,6 +8,11 @@
     <script>
         (function () {
             var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe|escapejs }}'));
+            let tableModule = wrapper.quill.getModule("better-table");
+            document.body.querySelector("#insert-table").onclick = () => {
+                tableModule.insertTable(3, 3);
+            };
+            
             {% if quill and quill.delta %}
                 // try django_quill/quill.py/Quill instance
                 var contents = JSON.parse('{{ quill.delta|safe|escapejs }}');

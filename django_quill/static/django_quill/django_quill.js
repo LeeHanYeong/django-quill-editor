@@ -26,8 +26,3 @@ class QuillWrapper {
     });
   }
 }
-
-let tableModule = quill.getModule("better-table");
-document.body.querySelector("#insert-table").onclick = () => {
-  tableModule.insertTable(3, 3);
-};
