@@ -7,3 +7,13 @@ button.ytp-large-play-button,
 button.ytp-button {
     pointer-events: none;
 }
+
+#btn-group {
+    margin-top: 5px;
+}
+#btn-group button {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    padding: 2.5px;
+    margin: 5px;
+}
