@@ -2,19 +2,6 @@ DEFAULT_CONFIG = {
     "theme": "snow",
     "modules": {
         "table": True,
-        "better-table": {
-            "operationMenu": {
-                "items": {
-                    "unmergeCells": {
-                        "text": 'Another unmerge cells name'
-                    }
-                },
-                "color": {
-                    "colors": ['green', 'red', 'yellow', 'blue', 'white'],
-                    "text": 'Background Colors:'
-                }
-            }
-        },
         "syntax": True,
         "toolbar": [
             [
