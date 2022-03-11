@@ -8,10 +8,10 @@ button.ytp-button {
     pointer-events: none;
 }
 
-#btn-group {
+.btn-group {
     margin-top: 5px;
 }
-#btn-group button {
+.btn-group button {
     border: 1px solid #ccc;
     border-radius: 2px;
     padding: 2.5px;

@@ -15,7 +15,7 @@
     <script>
         (function () {
             var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe|escapejs }}'));
-            let tableModule = wrapper.quill.getModule("table");
+            let table = wrapper.quill.getModule("table");
 
             document.querySelector('#insert-table').addEventListener('click', function() {
                 table.insertTable(2, 2);
