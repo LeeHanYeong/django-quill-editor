@@ -57,7 +57,7 @@ MEDIA_JS = [
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js",
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/xml.min.js",
     # quill
-    "https://cdn.quilljs.com/1.3.7/quill.min.js",
+    "https://cdn.quilljs.com/2.0.0-dev.2/quill.js",
     # quill-image-compress
     "https://cdn.jsdelivr.net/npm/quill-image-compress@1.2.21/dist/quill.imageCompressor.min.js",
     # quill-resize
@@ -69,7 +69,7 @@ MEDIA_JS = [
 ]
 MEDIA_CSS = [
     # syntax-highlight
-    "https://cdn.quilljs.com/1.3.7/quill.snow.css",
+    "https://cdn.quilljs.com/2.0.0-dev.2/quill.snow.css",
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/darcula.min.css",
     "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css",
     # quill-resize
