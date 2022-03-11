@@ -1,6 +1,12 @@
 Quill.register("modules/imageCompressor", imageCompressor);
 Quill.register("modules/resize", window.QuillResizeModule);
 Quill.register("modules/htmlEditButton", htmlEditButton);
+Quill.register(
+  {
+    "modules/better-table": quillBetterTable,
+  },
+  true
+);
 
 class QuillWrapper {
   constructor(targetDivId, targetInputId, quillOptions) {
@@ -20,3 +26,8 @@ class QuillWrapper {
     });
   }
 }
+
+let tableModule = quill.getModule("better-table");
+document.body.querySelector("#insert-table").onclick = () => {
+  tableModule.insertTable(3, 3);
+};

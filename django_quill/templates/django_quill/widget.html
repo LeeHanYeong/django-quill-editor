@@ -2,6 +2,9 @@
 <div class="vLargeTextField django-quill-widget-container">
     <div id="quill-{{ id }}" class="django-quill-widget" data-config="{{ config }}" data-type="django-quill"></div>
     <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden">
+    <div class="btn-group">
+        <button id="insert-table">Insert table</button>
+    </div>
     <script>
         (function () {
             var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe|escapejs }}'));
