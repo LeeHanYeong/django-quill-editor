@@ -1,7 +1,7 @@
 DEFAULT_CONFIG = {
     "theme": "snow",
     "modules": {
-        "table": False,
+        "table": True,
         "better-table": {
             "operationMenu": {
                 "items": {
