@@ -27,7 +27,7 @@ tox = "^3.24.4"
 # Deploy
 twine = "^3.7.0"
 setuptools = "^59.5.0"
-notebook = "^6.4.6"
+notebook = "^6.4.12"
 
 # Doc
 Sphinx = "^4.3.1"
