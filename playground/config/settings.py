@@ -59,8 +59,11 @@ QUILL_CONFIGS = {
                 "debug": False,
                 "suppressErrorLogging": True,
             },
-            # quill-image-resize
-            "imageResize": {},
+            # quill-resize
+            "resize": {
+                "showSize": True,
+                "locale": {},
+            },
         },
     },
 }
