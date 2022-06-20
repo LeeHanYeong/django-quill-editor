@@ -22,4 +22,4 @@ class QuillPost(models.Model):
 
 class NonQuillPost(models.Model):
     content_char = CharField(max_length=300, blank=True)
-    content_text = QuillField()
+    content_text = TextField(blank=True)

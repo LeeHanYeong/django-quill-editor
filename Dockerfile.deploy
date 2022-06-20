@@ -1,13 +1,8 @@
 # syntax = docker/dockerfile:experimental
-FROM        python:3.9-slim
+FROM        python:3.10-alpine
 
 # Language, Timezone
 ENV         LANG C.UTF-8
-
-RUN         \
-            apt -y update &&\
-            apt -y dist-upgrade &&\
-            apt -y autoremove
 
 # requirements
 COPY        requirements.txt /tmp/requirements.txt
@@ -22,4 +17,4 @@ COPY        .   /srv/
 WORKDIR     /srv/playground
 
 EXPOSE      8000
-CMD         python manage.py shell_plus --ipython
+CMD         python manage.py shell_plus

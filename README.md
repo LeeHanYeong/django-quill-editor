@@ -169,9 +169,12 @@ python -m http.server 3001
 
  
 
-### docker-compose up (in local)
+### docker-compose up
 
 ```shell
-docker-compose -f docker-compose-local.yml up --build --force-recreate --remove-orphans
+# local
+docker-compose --env-file .deploy/.env.local up --build --force-recreate --remove-orphans
+# production
+docker-compose --env-file .deploy/.env.production up --build --force-recreate --remove-orphans
 ```
 
