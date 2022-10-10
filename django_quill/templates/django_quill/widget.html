@@ -22,6 +22,8 @@
                     wrapper.quill.clipboard.dangerouslyPasteHTML(0, `{{ value|safe }}`)
                 }
             {% endif %}
+            // Allow quill object interaction outer scope
+            djq['{{ id }}'] = wrapper;
         })();
     </script>
 </div>
