@@ -1,6 +1,8 @@
 Quill.register("modules/imageCompressor", imageCompressor);
 Quill.register("modules/resize", window.QuillResizeModule);
 
+const djq = {}
+
 class QuillWrapper {
     constructor(targetDivId, targetInputId, quillOptions) {
         this.targetDiv = document.getElementById(targetDivId);
