@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-quill-editor"
-version = "0.1.0"
+version = "0.1.40"
 description = ""
 authors = ["lhy <dev@lhy.kr>"]
 packages = [
