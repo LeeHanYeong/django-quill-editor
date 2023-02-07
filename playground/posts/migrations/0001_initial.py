@@ -5,7 +5,6 @@ import django_quill.fields
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = []

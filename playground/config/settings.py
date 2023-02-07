@@ -18,6 +18,11 @@ ALLOWED_HOSTS = [
     "quill.localhost",
     "quill.lhy.kr",
 ]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost",
+    "http://quill.localhost",
+    "https://quill.lhy.kr",
+]
 
 # Static
 STATIC_DIR = BASE_DIR / "static"
