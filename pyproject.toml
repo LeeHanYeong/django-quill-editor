@@ -1,10 +1,28 @@
+# Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "django-quill-editor"
-version = "0.1.0"
-description = ""
+version = "0.1.36"
+description = "Integrate Quill editor with Django project."
+readme = "README.me"
 authors = ["lhy <dev@lhy.kr>"]
+license = "MIT"
+repository = "https://github.com/LeeHanYeong/django-quill-editor"
+homepage = "https://github.com/LeeHanYeong/django-quill-editor"
 packages = [
     { include = "django_quill" },
+]
+classifiers=[
+    "Framework :: Django",
+    "Framework :: Django :: 3.1",
+    "Framework :: Django :: 3.2",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Development Status :: 4 - Beta",
 ]
 
 [tool.poetry.dependencies]
