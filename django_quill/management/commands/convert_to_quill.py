@@ -20,7 +20,7 @@ class Command(BaseCommand):
         field_name = options["field_name"]
 
         model = apps.get_registered_model(app_label, model_name)
-        instances = model.objects.all()
+        instances = model.objects.all().only(field_name)
         for index, instance in enumerate(instances, start=1):
             print(
                 f"[{index}/{len(instances)}] {model_name} (pk: {instance.pk}) converting"
