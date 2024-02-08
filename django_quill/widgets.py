@@ -30,7 +30,8 @@ json_encode = LazyEncoder().encode
 
 class QuillWidget(forms.Textarea):
     class Media:
-        js = MEDIA_JS
+        # Do not include JS files here due to multiple definitions.
+        # js = MEDIA_JS
         css = {"all": MEDIA_CSS}
 
     def __init__(self, config_name="default", *args, **kwargs):
