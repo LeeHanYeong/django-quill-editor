@@ -34,7 +34,7 @@ Sphinx = "^4.3.1"
 recommonmark = "^0.7.1"
 sphinx-rtd-theme = "^1.0.0"
 build = "^0.7.0"
-wheel = "^0.37.0"
+wheel = "^0.38.1"
 
 [tool.pytest.ini_options]
 python_files = ["test*.py", "*_tests.py"]
