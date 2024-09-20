@@ -10,6 +10,13 @@
 
 ![django-quill-editor](https://raw.githubusercontent.com/LeeHanYeong/django-quill-editor/master/_assets/django-quill-editor-sample.png)
 
+> **Warning**  
+> The content entered in django-quill-editor can be used for XSS attacks because it is marked_safe by Django.  
+> Only authorized administrators should use it in important projects.
+>
+> - [XSS](https://docs.djangoproject.com/en/dev/topics/security/#cross-site-scripting-xss-protection)
+> - [mark_safe](https://docs.djangoproject.com/en/dev/ref/utils/#django.utils.safestring.mark_safe)
+
 ## Live Demo
 
 #### https://quill.lhy.kr/
@@ -107,11 +114,11 @@ git clone git@github.com:LeeHanYeong/django-quill-editor.git
 cd django-quill-editor
 # [apply venv]
 
-# Install requirements
-pip install -r requirements.txt
-
 # Go to the playground package
 cd playground
+
+# Install requirements
+pip install -r requirements.txt
 
 # Run migrate and runserver
 python manage.py migrate
@@ -171,20 +178,10 @@ python -m http.server 3001
 
 ### docker-compose up
 
-1. Create network
-
-```shell
-docker network create proxy \
-  --subnet=172.20.0.0/16 \
-  --gateway=172.20.0.1
-```
-
-2. run docker
-
 ```shell
 # local
-docker compose --env-file .deploy/.env.local up --build --force-recreate --remove-orphans
+docker-compose --env-file .deploy/.env.local up --build --force-recreate --remove-orphans
 # production
-docker compose --env-file .deploy/.env.production up --build --force-recreate --remove-orphans
+docker-compose --env-file .deploy/.env.production up --build --force-recreate --remove-orphans
 ```
 
