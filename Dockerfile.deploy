@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:experimental
-FROM        python:3.10-slim
+FROM        python:3.12-slim
 
 # Language, Timezone
 ENV         LANG C.UTF-8
