@@ -3,17 +3,20 @@ version: '3'
 services:
   quill:
     image: nginx:alpine
+    container_name: quill-nginx
     volumes:
       - .deploy/quill.conf:/etc/nginx/conf.d/default.conf
       - static:/srv/playground/.static
     networks:
-      - default
-      - proxy
+      proxy:
+        ipv4_address: 172.20.0.102
+      default:
 
   django:
     build:
       context: .
       dockerfile: ${DOCKERFILE}
+    container_name: quill-django
     volumes:
       - static:/srv/playground/.static
     command: sh -c '
@@ -27,6 +30,5 @@ volumes:
   static:
 
 networks:
-  default:
   proxy:
     external: true
