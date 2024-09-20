@@ -107,11 +107,11 @@ git clone git@github.com:LeeHanYeong/django-quill-editor.git
 cd django-quill-editor
 # [apply venv]
 
-# Go to the playground package
-cd playground
-
 # Install requirements
 pip install -r requirements.txt
+
+# Go to the playground package
+cd playground
 
 # Run migrate and runserver
 python manage.py migrate
