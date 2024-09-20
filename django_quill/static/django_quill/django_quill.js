@@ -1,8 +1,13 @@
-Quill.register("modules/imageCompressor", imageCompressor);
-Quill.register("modules/resize", window.QuillResizeModule);
+const djq = {}
 
 class QuillWrapper {
     constructor(targetDivId, targetInputId, quillOptions) {
+        if (!Quill.imports["modules/resize"] && quillOptions["modules"].resize) {
+            Quill.register("modules/resize", window.QuillResizeModule);
+        }
+        if (!Quill.imports["modules/imageCompressor"] && quillOptions["modules"].imageCompressor) {
+            Quill.register("modules/imageCompressor", imageCompressor);
+        }
         this.targetDiv = document.getElementById(targetDivId);
         if (!this.targetDiv) throw 'Target div(' + targetDivId + ') id was invalid';
 

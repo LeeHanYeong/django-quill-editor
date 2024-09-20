@@ -18,6 +18,9 @@ class FieldQuill:
         self.json_string = json_string or '{"delta":"","html":""}'
         self._committed = True
 
+    def __str__(self):
+        return self.delta
+        
     def __eq__(self, other):
         if hasattr(other, "json_string"):
             return self.json_string == other.json_string

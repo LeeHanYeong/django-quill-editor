@@ -107,11 +107,11 @@ git clone git@github.com:LeeHanYeong/django-quill-editor.git
 cd django-quill-editor
 # [apply venv]
 
-# Go to the playground package
-cd playground
-
 # Install requirements
 pip install -r requirements.txt
+
+# Go to the playground package
+cd playground
 
 # Run migrate and runserver
 python manage.py migrate
@@ -169,9 +169,22 @@ python -m http.server 3001
 
  
 
-### docker-compose up (in local)
+### docker-compose up
+
+1. Create network
 
 ```shell
-docker-compose -f docker-compose-local.yml up --build --force-recreate --remove-orphans
+docker network create proxy \
+  --subnet=172.20.0.0/16 \
+  --gateway=172.20.0.1
+```
+
+2. run docker
+
+```shell
+# local
+docker compose --env-file .deploy/.env.local up --build --force-recreate --remove-orphans
+# production
+docker compose --env-file .deploy/.env.production up --build --force-recreate --remove-orphans
 ```
 

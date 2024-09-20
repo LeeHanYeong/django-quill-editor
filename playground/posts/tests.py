@@ -2,7 +2,7 @@ from django.core import management
 from django.test import TestCase
 from django.urls import reverse
 
-from config import baker
+from config.baker import baker
 from django_quill.quill import Quill, QuillParseError
 from posts.models import QuillPost, NonQuillPost
 
@@ -26,21 +26,19 @@ class QuillViewTest(TestCase):
 
 
 class QuillAdminTest(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        cls.posts = baker.make(QuillPost, _quantity=30)
-
     def setUp(self) -> None:
         self.client.login()
 
     def test_list(self):
-        response = self.client.get(reverse("admin:posts_quillpost_changelist"))
+        baker.make(QuillPost, _quantity=13)
+        url = reverse("admin:posts_quillpost_changelist")
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_detail(self):
-        response = self.client.get(
-            reverse("admin:posts_quillpost_change", args=[self.posts[0].id])
-        )
+        post = baker.make(QuillPost)
+        url = reverse("admin:posts_quillpost_change", args=[post.id])
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
 
