@@ -3,7 +3,7 @@
     <div id="quill-{{ id }}" class="django-quill-widget" data-config="{{ config }}" data-type="django-quill"></div>
     <input id="quill-input-{{ id }}" name="{{ name }}" type="hidden">
     <script>
-        (function () {
+        document.addEventListener("DOMContentLoaded", function() {
             var wrapper = new QuillWrapper('quill-{{ id }}', 'quill-input-{{ id }}', JSON.parse('{{ config|safe|escapejs }}'));
             {% if quill and quill.delta %}
                 // try django_quill/quill.py/Quill instance
@@ -24,6 +24,6 @@
             {% endif %}
             // Allow quill object interaction outer scope
             djq['{{ id }}'] = wrapper;
-        })();
+        });
     </script>
 </div>
