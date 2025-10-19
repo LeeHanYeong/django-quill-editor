@@ -23,3 +23,22 @@ class QuillWrapper {
         });
     }
 }
+
+const editor = this.targetDiv.querySelector('.ql-editor');
+if (editor) {
+    editor.style.maxHeight = '450px';
+    editor.style.overflowY = 'auto';
+
+    editor.addEventListener('focus', () => {
+        document.body.style.overflow = 'hidden';
+    });
+    editor.addEventListener('click', () => {
+        document.body.style.overflow = 'hidden';
+    });
+}
+
+document.addEventListener('click', (e) => {
+    if (editor && !editor.contains(e.target)) {
+        document.body.style.overflow = '';
+    }
+});

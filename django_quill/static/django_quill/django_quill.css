@@ -7,3 +7,7 @@ button.ytp-large-play-button,
 button.ytp-button {
     pointer-events: none;
 }
+.ql-editor {
+    max-height: 450px;
+    overflow-y: auto;
+}
